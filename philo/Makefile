@@ -1,0 +1,49 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: drubio-m <drubio-m@student.42madrid.com    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/08/31 15:19:02 by drubio-m          #+#    #+#              #
+#    Updated: 2023/08/31 15:28:53 by drubio-m         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+SRC = 
+SRC_DIR = src
+OBJS = $(addprefix $(SRC_DIR)/, $(SRC:.c=.o))
+C = gcc
+FLAGS = -Wall -Wextra -Werror -I inc -I libft #-g  -fsanitize=address
+NAME = philo
+RM = rm -rf
+
+LIBFT_DIR = libft/
+LIBFT_A = libft.a
+LIBFT = -L$(LIBFT_DIR) $(LIBFT_DIR)$(LIBFT_A)
+
+
+all: $(NAME)
+
+.SILENT:
+
+$(NAME): $(OBJS)             
+	@echo "\033[36;49;1;3m----Compiling lib----\n"
+	@make -s -C $(LIBFT_DIR) --silent
+	@gcc $(FLAGS) $(OBJS) $(LIBFT) -o $(NAME)
+	@echo "\033[32;49;1;3mPipex Compiled! ᕦ(\033[31m♥\033[32m_\033[31m♥\033[32m)ᕤ"
+
+clean:
+	@$(RM) $(OBJS)
+	@make -s -C $(LIBFT_DIR) clean --silent 
+
+fclean:	clean
+	@$(RM) $(NAME)
+	@make -s -C $(LIBFT_DIR) fclean --silent 
+	@echo "\033[35;49;1mHEAVY CLEANING, EVERYTHING HAS BEEN DELETED\n"
+
+re:	fclean all
+#	@make all
+	@echo "\033[33;49;1;3m\nEaster Egg ;)"
+	
+.PHONY:	all clean fclean re
