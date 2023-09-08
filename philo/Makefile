@@ -6,16 +6,16 @@
 #    By: drubio-m <drubio-m@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/31 15:19:02 by drubio-m          #+#    #+#              #
-#    Updated: 2023/09/03 12:26:58 by drubio-m         ###   ########.fr        #
+#    Updated: 2023/09/08 18:28:22 by drubio-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC = 
-SRC_DIR = src
-OBJS = $(addprefix $(SRC_DIR)/, $(SRC:.c=.o))
-C = gcc
-FLAGS = -Wall -Wextra -Werror #-g  -fsanitize=address
 NAME = philo
+CC = gcc
+FLAGS = -Wall -Wextra -Werror #-g  -fsanitize=address
+SRC = philo.c lib_utils.c parse_params.c
+#SRC_DIR = philo	
+OBJS = $(SRC:.c=.o)
 RM = rm -rf
 
 
@@ -33,7 +33,7 @@ $(NAME): $(OBJS)
 	@echo 		  		'    \ \__\    \ \__\ \__\ \__\ \_______\ \_______\ '
 	@echo 				'     \|__|     \|__|\|__|\|__|\|_______|\|_______| '
 	@echo "\033[0m\n"
-	@gcc $(FLAGS) $(OBJS) $(NAME)   
+	@$(CC) $(FLAGS) $(OBJS) -o $(NAME)   
 
 clean:
 	@$(RM) $(OBJS)

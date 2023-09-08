@@ -6,7 +6,7 @@
 /*   By: drubio-m <drubio-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 19:04:18 by drubio-m          #+#    #+#             */
-/*   Updated: 2023/09/05 19:46:39 by drubio-m         ###   ########.fr       */
+/*   Updated: 2023/09/08 17:05:28 by drubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,3 +39,8 @@ long	ft_atoi(const char *str)
 	return (sol * sign);
 }
 
+void	ft_error(void)
+{
+	printf("Error\n");
+	exit(EXIT_FAILURE);
+}
