@@ -6,7 +6,7 @@
 /*   By: drubio-m <drubio-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 17:34:18 by drubio-m          #+#    #+#             */
-/*   Updated: 2023/09/05 19:50:02 by drubio-m         ###   ########.fr       */
+/*   Updated: 2023/09/07 16:36:15 by drubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,12 @@
 
 int	main(int argc, char *argv[])
 {
-
+	if (ft_check_valid_args(argc, argv) == 1)
+		ft_error();
+		
+		
+	return (0);
 }
-
 
 /*
 ARGUMENTOS

@@ -6,7 +6,7 @@
 /*   By: drubio-m <drubio-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 18:09:33 by drubio-m          #+#    #+#             */
-/*   Updated: 2023/09/05 20:06:24 by drubio-m         ###   ########.fr       */
+/*   Updated: 2023/09/07 18:15:35 by drubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,14 @@
 # include <sys/time.h>
 
 // Structs
-
+	
 // Philo
+
+// Parse
+int	ft_check_valid_args(int argc, char *argv[]);
+void ft_args_to_params(char *argv[]);
+
+
 
 // Utils
 void	ft_error(void);
