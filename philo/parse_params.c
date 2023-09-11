@@ -6,7 +6,7 @@
 /*   By: drubio-m <drubio-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 19:07:04 by drubio-m          #+#    #+#             */
-/*   Updated: 2023/09/10 19:25:24 by drubio-m         ###   ########.fr       */
+/*   Updated: 2023/09/11 17:28:51 by drubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	init_struct_data(t_philo philo)
 {
-	
+
 }
 
 int	ft_check_valid_args(int argc, char *argv[], t_data *data)
@@ -24,11 +24,8 @@ int	ft_check_valid_args(int argc, char *argv[], t_data *data)
 
 	i = 1;
 	j = 0;
-	printf("\n Estoy antes del if");
-	printf("%s%d", "\n", argc);
 	if (argc < 5 || argc > 6)
 		ft_error();
-	printf("\n Estoy después del if");
 	while (argv[i])
 	{
 		j = 0;
@@ -40,9 +37,18 @@ int	ft_check_valid_args(int argc, char *argv[], t_data *data)
 		}
 		i++;
 	}
-	printf("\n argumento super válido");
-	ft_args_to_params(argv, data);
+	fits_in_int(argv);
+	//ft_args_to_params(argv, data);
 	return (0);
+}
+
+void	fits_in_int(char *argv[])
+{
+	int	i;
+
+	i = 0;
+	while (argv[++i])
+		ft_atoi(argv[i]);
 }
 
 void	ft_args_to_params(char *argv[], t_data *data)

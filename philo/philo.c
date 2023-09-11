@@ -6,7 +6,7 @@
 /*   By: drubio-m <drubio-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 17:34:18 by drubio-m          #+#    #+#             */
-/*   Updated: 2023/09/10 19:01:30 by drubio-m         ###   ########.fr       */
+/*   Updated: 2023/09/11 17:33:11 by drubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	main(int argc, char *argv[])
 	t_data	*data;
 
 	if (ft_check_valid_args(argc, argv, data) == 1)
-		ft_error();
+		ft_error("Invalid arguments");
 	printf("\nooleeee");
 	return (0);
 }

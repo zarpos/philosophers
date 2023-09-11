@@ -6,7 +6,7 @@
 /*   By: drubio-m <drubio-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 19:04:18 by drubio-m          #+#    #+#             */
-/*   Updated: 2023/09/08 17:05:28 by drubio-m         ###   ########.fr       */
+/*   Updated: 2023/09/11 17:35:51 by drubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,14 @@ long	ft_atoi(const char *str)
 		i++;
 	}
 	if (sol > 2147483647 && sign == 1)
-		ft_error();
+		ft_error("Number out of int range");
 	if (sol > 2147483648 && sign == -1)
-		ft_error();
+		ft_error("Number out of int range");
 	return (sol * sign);
 }
 
-void	ft_error(void)
+void	ft_error(char *str)
 {
-	printf("Error\n");
+	printf("%s%s%s""Error: ", str, "\n");
 	exit(EXIT_FAILURE);
 }
