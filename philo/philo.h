@@ -6,7 +6,7 @@
 /*   By: drubio-m <drubio-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 18:09:33 by drubio-m          #+#    #+#             */
-/*   Updated: 2023/09/08 15:18:24 by drubio-m         ###   ########.fr       */
+/*   Updated: 2023/09/10 19:24:16 by drubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,6 @@ typedef struct s_philo
 // Parse
 int		ft_check_valid_args(int argc, char *argv[], t_data *data);
 void	ft_args_to_params(char *argv[], t_data *data);
-
-
-
 
 // Utils
 void	ft_error(void);
