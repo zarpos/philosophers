@@ -6,7 +6,7 @@
 /*   By: drubio-m <drubio-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 19:04:18 by drubio-m          #+#    #+#             */
-/*   Updated: 2023/09/12 11:10:00 by drubio-m         ###   ########.fr       */
+/*   Updated: 2023/09/12 12:56:06 by drubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ long long	ft_atoi(const char *str)
 		ft_error("Number out of int range");
 	if (sol > 2147483648 && sign == -1)
 		ft_error("Number out of int range");
+	if (sign == -1)
+		ft_error("Negative numbers are not allowed");
 	return (sol * sign);
 }
 

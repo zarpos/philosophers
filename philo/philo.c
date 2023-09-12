@@ -6,7 +6,7 @@
 /*   By: drubio-m <drubio-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 17:34:18 by drubio-m          #+#    #+#             */
-/*   Updated: 2023/09/12 10:55:51 by drubio-m         ###   ########.fr       */
+/*   Updated: 2023/09/12 12:51:17 by drubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,9 @@
 
 int	main(int argc, char *argv[])
 {
-	t_philo	*philo;
-	t_data	*data;
+	t_data	data;
 
-	ft_check_valid_args(argc, argv, data);
+	ft_parse_arguments(argc, argv, &data);
 	printf("\nooleeee");
 	return (0);
 }
