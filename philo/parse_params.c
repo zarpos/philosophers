@@ -6,7 +6,7 @@
 /*   By: drubio-m <drubio-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 19:07:04 by drubio-m          #+#    #+#             */
-/*   Updated: 2023/09/12 13:00:52 by drubio-m         ###   ########.fr       */
+/*   Updated: 2023/09/12 21:03:22 by drubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 void	ft_parse_arguments(int argc, char *argv[], t_data *data)
 {
-	ft_check_valid_args(argc, argv, data);
+	ft_check_valid_args(argc, argv);
 	ft_fits_in_int(argv);
 	ft_args_to_params(argv, data);
 }
 
-void	ft_check_valid_args(int argc, char *argv[], t_data *data)
+void	ft_check_valid_args(int argc, char *argv[])
 {
 	int		i;
 	int		j;
