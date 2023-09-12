@@ -6,7 +6,7 @@
 /*   By: drubio-m <drubio-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 19:04:18 by drubio-m          #+#    #+#             */
-/*   Updated: 2023/09/11 17:35:51 by drubio-m         ###   ########.fr       */
+/*   Updated: 2023/09/12 10:53:56 by drubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,6 @@ long	ft_atoi(const char *str)
 
 void	ft_error(char *str)
 {
-	printf("%s%s%s""Error: ", str, "\n");
+	printf("%s%s%s", "\033[0;31mError: \033[0m", str, "\n");
 	exit(EXIT_FAILURE);
 }
