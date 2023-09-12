@@ -6,17 +6,17 @@
 /*   By: drubio-m <drubio-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 19:04:18 by drubio-m          #+#    #+#             */
-/*   Updated: 2023/09/12 10:53:56 by drubio-m         ###   ########.fr       */
+/*   Updated: 2023/09/12 11:10:00 by drubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-long	ft_atoi(const char *str)
+long long	ft_atoi(const char *str)
 {
-	long			i;
-	int				sign;
-	unsigned long	sol;
+	long				i;
+	int					sign;
+	unsigned long long	sol;
 
 	i = 0;
 	sign = 1;

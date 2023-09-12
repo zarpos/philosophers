@@ -6,7 +6,7 @@
 /*   By: drubio-m <drubio-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 19:07:04 by drubio-m          #+#    #+#             */
-/*   Updated: 2023/09/12 10:47:33 by drubio-m         ###   ########.fr       */
+/*   Updated: 2023/09/12 11:07:37 by drubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,13 @@ int	ft_check_valid_args(int argc, char *argv[], t_data *data)
 		while (argv[i][j])
 		{
 			if ((argv[i][j] < '0' || argv[i][j] > '9') && argv[i][j] != '\0')
-				return (1);
+				ft_error("Argument is not a number");
 			j++;
 		}
 		i++;
 	}
 	fits_in_int(argv);
-	//ft_args_to_params(argv, data);
+	ft_args_to_params(argv, data);
 	return (0);
 }
 
