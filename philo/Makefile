@@ -6,7 +6,7 @@
 #    By: drubio-m <drubio-m@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/31 15:19:02 by drubio-m          #+#    #+#              #
-#    Updated: 2023/09/13 12:10:46 by drubio-m         ###   ########.fr        #
+#    Updated: 2023/09/13 12:12:48 by drubio-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,3 +47,5 @@ re:	fclean all
 	@echo "\033[33;49;1;3m\nEaster Egg ;)"
 	
 .PHONY:	all clean fclean re
+
+# Este es el nuevo makefile
