@@ -6,7 +6,7 @@
 /*   By: drubio-m <drubio-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 18:09:33 by drubio-m          #+#    #+#             */
-/*   Updated: 2023/09/12 21:03:07 by drubio-m         ###   ########.fr       */
+/*   Updated: 2023/09/13 14:58:53 by drubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ typedef struct s_data
 
 typedef struct s_philo
 {
-
+	int 	is_dead;
+		
 }	t_philo;
 
 // Philo
