@@ -6,7 +6,7 @@
 #    By: drubio-m <drubio-m@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/31 15:19:02 by drubio-m          #+#    #+#              #
-#    Updated: 2023/09/11 17:11:55 by drubio-m         ###   ########.fr        #
+#    Updated: 2023/09/12 18:32:17 by drubio-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,13 +14,15 @@ NAME = philo
 CC = gcc
 FLAGS = -Wall -Wextra -Werror -g3  -fsanitize=address
 SRC = philo.c lib_utils.c parse_params.c
+OBJ_FOLDER = _objfiles
 #SRC_DIR = philo	
-OBJS = $(SRC:.c=.o)
+#OBJS = $(SRC:.c=.o)
+OBJS = $(addprefix $(DOT_O)/, $(SRC:.c=.o))
 RM = rm -rf
 
 
 
-all: $(NAME)
+all: $(NAME) $(OBJ_FOLDER)
 
 .SILENT:
 
@@ -34,6 +36,12 @@ $(NAME): $(OBJS)
 	@echo 				'     \|__|     \|__|\|__|\|__|\|_______|\|_______| '
 	@echo "\033[0m\n"
 	@$(CC) $(FLAGS) $(OBJS) -o $(NAME)   
+
+$(OBJ_FOLDER):
+	mkdir -p $(OBJ_FOLDER)
+
+$(OBJ_FOLDER)/%.o: $(SRC) | $(OBJ_FOLDER)
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	@$(RM) $(OBJS)
