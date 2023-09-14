@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.c                                            :+:      :+:    :+:   */
+/*   thread_practice.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: drubio-m <drubio-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/03 17:34:18 by drubio-m          #+#    #+#             */
-/*   Updated: 2023/09/14 11:06:50 by drubio-m         ###   ########.fr       */
+/*   Created: 2023/09/13 17:22:09 by drubio-m          #+#    #+#             */
+/*   Updated: 2023/09/14 12:40:35 by drubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	main(int argc, char *argv[])
-{
-	t_data	data;
+	int i = 1;
 
-	ft_parse_arguments(argc, argv, &data);
-	ft_example();
-//	printf("\nooleeee");
-	return (0);
+void *routine()
+{
+
+	printf("hola que tal soy el philo: %d\n", i++);
+	return NULL;
 }
 
-/*
-ARGUMENTOS
-1. number_of_philosophers 
-2. time_to_die 
-3. time_to_eat
-4. time_to_sleep
-5. [number_of_times_each_philosopher_must_eat]
-
-*/
+void	ft_example(void)
+{
+	pthread_t	th[1000000];
+	int i = 0;
+	while (i++ < 1000000)
+	{
+		pthread_create(th + i, NULL, &routine, NULL);
+		pthread_join(th[i], NULL);
+	}
+}

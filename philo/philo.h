@@ -6,7 +6,7 @@
 /*   By: drubio-m <drubio-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 18:09:33 by drubio-m          #+#    #+#             */
-/*   Updated: 2023/09/13 17:21:41 by drubio-m         ###   ########.fr       */
+/*   Updated: 2023/09/14 12:32:46 by drubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,11 @@ void		ft_error(char *str);
 
 // Lib Utils
 long long	ft_atoi(const char *str);
+
+
+
+void	ft_example(void);
+void	*routine();
+
 
 #endif
