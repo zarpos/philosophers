@@ -6,7 +6,7 @@
 /*   By: drubio-m <drubio-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 18:09:33 by drubio-m          #+#    #+#             */
-/*   Updated: 2023/09/14 12:32:46 by drubio-m         ###   ########.fr       */
+/*   Updated: 2023/09/18 19:25:09 by drubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,12 @@
 # include <limits.h>
 # include <sys/time.h>
 
+// Defines
+# define EATING 1
+# define SLEEPING 2
+# define THINKING 3
+# define DEAD 4
+
 // Structs
 typedef struct s_data
 {
@@ -32,7 +38,16 @@ typedef struct s_data
 
 typedef struct s_philo
 {
-	
+	int					id;
+	int					meal_counter;
+	int					status;
+	uint64_t			last_meal;
+	pthread_mutex_t		*left_fork;
+	pthread_mutex_t		*right_fork;
+	pthread_mutex_t		*print;
+	pthread_mutex_t		*lock;
+	t_data				*data;
+
 }	t_philo;
 
 // Philo
@@ -48,11 +63,5 @@ void		ft_error(char *str);
 
 // Lib Utils
 long long	ft_atoi(const char *str);
-
-
-
-void	ft_example(void);
-void	*routine();
-
 
 #endif

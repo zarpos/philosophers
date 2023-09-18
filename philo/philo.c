@@ -6,7 +6,7 @@
 /*   By: drubio-m <drubio-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 17:34:18 by drubio-m          #+#    #+#             */
-/*   Updated: 2023/09/14 11:06:50 by drubio-m         ###   ########.fr       */
+/*   Updated: 2023/09/18 16:46:13 by drubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ int	main(int argc, char *argv[])
 	t_data	data;
 
 	ft_parse_arguments(argc, argv, &data);
-	ft_example();
 //	printf("\nooleeee");
 	return (0);
 }
