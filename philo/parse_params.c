@@ -6,12 +6,13 @@
 /*   By: drubio-m <drubio-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 19:07:04 by drubio-m          #+#    #+#             */
-/*   Updated: 2023/09/12 21:03:22 by drubio-m         ###   ########.fr       */
+/*   Updated: 2023/09/19 00:01:00 by drubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
+// This function calls the functions to parse the arguments
 void	ft_parse_arguments(int argc, char *argv[], t_data *data)
 {
 	ft_check_valid_args(argc, argv);
@@ -19,6 +20,8 @@ void	ft_parse_arguments(int argc, char *argv[], t_data *data)
 	ft_args_to_params(argv, data);
 }
 
+// This function checks if there are the right number of arguments
+// and if they are numbers
 void	ft_check_valid_args(int argc, char *argv[])
 {
 	int		i;
@@ -43,6 +46,7 @@ void	ft_check_valid_args(int argc, char *argv[])
 	}
 }
 
+// This function checks if the arguments fit in an int
 void	ft_fits_in_int(char *argv[])
 {
 	int	i;
@@ -52,6 +56,7 @@ void	ft_fits_in_int(char *argv[])
 		ft_atoi(argv[i]);
 }
 
+// This function converts the arguments to the data struct
 void	ft_args_to_params(char *argv[], t_data *data)
 {
 	data->number_of_philosophers = ft_atoi(argv[1]);

@@ -6,7 +6,7 @@
 /*   By: drubio-m <drubio-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 18:09:33 by drubio-m          #+#    #+#             */
-/*   Updated: 2023/09/18 19:25:09 by drubio-m         ###   ########.fr       */
+/*   Updated: 2023/09/19 00:02:41 by drubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 typedef struct s_data
 {
 	int				number_of_philosophers;
+	int 			thread_id;
 	uint64_t		time_to_die;
 	uint64_t		time_to_eat;
 	uint64_t		time_to_sleep;
@@ -51,6 +52,7 @@ typedef struct s_philo
 }	t_philo;
 
 // Philo
+void		*routine(void *philo);
 
 // Parse
 void		ft_parse_arguments(int argc, char *argv[], t_data *data);
