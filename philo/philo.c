@@ -6,18 +6,26 @@
 /*   By: drubio-m <drubio-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 17:34:18 by drubio-m          #+#    #+#             */
-/*   Updated: 2023/09/18 16:46:13 by drubio-m         ###   ########.fr       */
+/*   Updated: 2023/09/19 19:25:08 by drubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
+/* void	ft_leaks(void)
+{
+	system("leaks -q philo");
+} */
+
 int	main(int argc, char *argv[])
 {
 	t_data	data;
 
+	//0atexit(ft_leaks);
 	ft_parse_arguments(argc, argv, &data);
-//	printf("\nooleeee");
+	printf("Argumentos parseados\n");
+	init_philos(&data);
+	printf("Philos iniciados\n");
 	return (0);
 }
 

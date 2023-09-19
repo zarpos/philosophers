@@ -6,7 +6,7 @@
 /*   By: drubio-m <drubio-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 18:09:33 by drubio-m          #+#    #+#             */
-/*   Updated: 2023/09/19 00:02:41 by drubio-m         ###   ########.fr       */
+/*   Updated: 2023/09/19 18:25:36 by drubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,18 @@
 # define DEAD 4
 
 // Structs
+typedef struct s_philo	t_philo;
+typedef struct s_data	t_data;
+
 typedef struct s_data
 {
 	int				number_of_philosophers;
-	int 			thread_id;
+	pthread_t		thread_id;
 	uint64_t		time_to_die;
 	uint64_t		time_to_eat;
 	uint64_t		time_to_sleep;
 	uint64_t		number_of_meals;
+	t_philo			*philo;
 }	t_data;
 
 typedef struct s_philo
@@ -53,6 +57,7 @@ typedef struct s_philo
 
 // Philo
 void		*routine(void *philo);
+void		init_philos(t_data	*data);
 
 // Parse
 void		ft_parse_arguments(int argc, char *argv[], t_data *data);
@@ -66,4 +71,5 @@ void		ft_error(char *str);
 // Lib Utils
 long long	ft_atoi(const char *str);
 
+void	ft_leaks(void);
 #endif
