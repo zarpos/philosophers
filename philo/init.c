@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   thread_practice.c                                  :+:      :+:    :+:   */
+/*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: drubio-m <drubio-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 17:22:09 by drubio-m          #+#    #+#             */
-/*   Updated: 2023/09/20 20:31:35 by drubio-m         ###   ########.fr       */
+/*   Updated: 2023/09/21 15:02:34 by drubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,13 @@ void	init_philos(t_data	*data)
 		philos[i].last_meal = 0;
 		printf("Last meal del philo: %llu\n", philos[i].last_meal);
 		philos[i].left_fork = NULL;
-		printf("Dirección del left fork: %p\n", (void *)philos[i].left_fork);
+		//printf("Dirección del left fork: %p\n", (void *)philos[i].left_fork);
 		philos[i].right_fork = NULL;
-		printf("Dirección del right fork: %p\n", (void *)philos[i].right_fork);
+		//printf("Dirección del right fork: %p\n", (void *)philos[i].right_fork);
 		philos[i].print = NULL;
-		printf("Dirección del print: %p\n", (void *)philos[i].print);
+		//printf("Dirección del print: %p\n", (void *)philos[i].print);
 		philos[i].lock = NULL;
-		printf("Dirección del lock: %p\n", (void *)philos[i].lock);
+		//printf("Dirección del lock: %p\n", (void *)philos[i].lock);
 		philos[i].data = data;
 		i++;
 	}
@@ -59,4 +59,24 @@ void	init_philos(t_data	*data)
 		printf("Hola soy el philo %d \n", i);
 		i++;
 	}	
+	init_mutex(philos, data);
+}
+
+void	init_mutex(t_philo *philo, t_data *data)
+{
+	int	i;
+
+	i = 0;
+	while (i < data->number_of_philosophers)
+	{
+		philo[i].left_fork = malloc(sizeof(pthread_mutex_t));
+		printf("Dirección del left fork(%d): %p\n\n", philo[i].id, (void *)philo[i].left_fork);
+		philo[i].right_fork = malloc(sizeof(pthread_mutex_t));
+		printf("Dirección del right fork(%d): %p\n\n", philo[i].id, (void *)philo[i].right_fork);
+		philo[i].print = malloc(sizeof(pthread_mutex_t));
+		printf("Dirección del print(%d): %p\n\n", philo[i].id, (void *)philo[i].print);
+		philo[i].lock = malloc(sizeof(pthread_mutex_t));
+		printf("Dirección del lock(%d): %p\n\n", philo[i].id, (void *)philo[i].lock);
+		i++;
+	}
 }

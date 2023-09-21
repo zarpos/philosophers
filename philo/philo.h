@@ -6,7 +6,7 @@
 /*   By: drubio-m <drubio-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 18:09:33 by drubio-m          #+#    #+#             */
-/*   Updated: 2023/09/19 18:25:36 by drubio-m         ###   ########.fr       */
+/*   Updated: 2023/09/21 12:47:14 by drubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ typedef struct s_philo
 // Philo
 void		*routine(void *philo);
 void		init_philos(t_data	*data);
+void		init_mutex(t_philo *philo, t_data *data);
+
 
 // Parse
 void		ft_parse_arguments(int argc, char *argv[], t_data *data);
