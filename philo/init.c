@@ -6,18 +6,18 @@
 /*   By: drubio-m <drubio-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 17:22:09 by drubio-m          #+#    #+#             */
-/*   Updated: 2023/09/21 15:02:34 by drubio-m         ###   ########.fr       */
+/*   Updated: 2023/09/25 17:05:51 by drubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
 // Routine for the philos
-void	*routine(void *philo_lol)
+void	*routine(void *philo_no_casted)
 {
 	t_philo	*philo;
 
-	philo = philo_lol;
+	philo = philo_no_casted;
 	printf("Hola soy el thread %d \n", philo->id);
 	printf("\n");
 	return (NULL);
@@ -31,10 +31,12 @@ void	init_philos(t_data	*data)
 
 	i = 0;
 	philos = malloc((sizeof(t_philo) * data->number_of_philosophers) + 1);
+	if (!philos)
+		ft_error("Failed to alloc memory for philos");
 	while (i < data->number_of_philosophers)
 	{
 		philos[i].id = i + 1;
-		printf("Id del philo: %d\n", i);
+		printf("Id del philo: %d\n", philos[i].id);
 		philos[i].meal_counter = 0;
 		printf("Meal count: %d\n", philos[i].meal_counter);
 		philos[i].status = 0;
@@ -42,22 +44,20 @@ void	init_philos(t_data	*data)
 		philos[i].last_meal = 0;
 		printf("Last meal del philo: %llu\n", philos[i].last_meal);
 		philos[i].left_fork = NULL;
-		//printf("Dirección del left fork: %p\n", (void *)philos[i].left_fork);
 		philos[i].right_fork = NULL;
-		//printf("Dirección del right fork: %p\n", (void *)philos[i].right_fork);
 		philos[i].print = NULL;
-		//printf("Dirección del print: %p\n", (void *)philos[i].print);
 		philos[i].lock = NULL;
-		//printf("Dirección del lock: %p\n", (void *)philos[i].lock);
 		philos[i].data = data;
 		i++;
 	}
 	i = 0;
-	while (i < data->number_of_philosophers)
+	while (i++ < data->number_of_philosophers)
 	{
+		printf("\n");
+		printf("Esto vale i justo ahora: %d\n", i);
+		printf("\n");
 		pthread_create(&data[i].thread_id, NULL, &routine, &philos[i]);
 		printf("Hola soy el philo %d \n", i);
-		i++;
 	}	
 	init_mutex(philos, data);
 }
@@ -70,12 +70,20 @@ void	init_mutex(t_philo *philo, t_data *data)
 	while (i < data->number_of_philosophers)
 	{
 		philo[i].left_fork = malloc(sizeof(pthread_mutex_t));
+		if (!philo[i].left_fork)
+			ft_error("Failed to allloc memory for fork");
 		printf("Dirección del left fork(%d): %p\n\n", philo[i].id, (void *)philo[i].left_fork);
 		philo[i].right_fork = malloc(sizeof(pthread_mutex_t));
+		if (!philo[i].right_fork)
+			ft_error("Failed to allloc memory for fork");
 		printf("Dirección del right fork(%d): %p\n\n", philo[i].id, (void *)philo[i].right_fork);
 		philo[i].print = malloc(sizeof(pthread_mutex_t));
+		if (!philo[i].print)
+			ft_error("Failed to alloc memory for print");
 		printf("Dirección del print(%d): %p\n\n", philo[i].id, (void *)philo[i].print);
 		philo[i].lock = malloc(sizeof(pthread_mutex_t));
+		if (!philo[i].lock)
+			ft_error("Failed to alloc memory for lock");
 		printf("Dirección del lock(%d): %p\n\n", philo[i].id, (void *)philo[i].lock);
 		i++;
 	}
