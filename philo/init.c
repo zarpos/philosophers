@@ -6,7 +6,7 @@
 /*   By: drubio-m <drubio-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 17:22:09 by drubio-m          #+#    #+#             */
-/*   Updated: 2023/09/25 17:05:51 by drubio-m         ###   ########.fr       */
+/*   Updated: 2023/09/26 11:49:34 by drubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ void	init_philos(t_data	*data)
 	init_mutex(philos, data);
 }
 
+// In this function we will alloc memory for the mutex and initiate them
 void	init_mutex(t_philo *philo, t_data *data)
 {
 	int	i;

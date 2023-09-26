@@ -6,7 +6,7 @@
 /*   By: drubio-m <drubio-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 18:09:33 by drubio-m          #+#    #+#             */
-/*   Updated: 2023/09/21 12:47:14 by drubio-m         ###   ########.fr       */
+/*   Updated: 2023/09/26 18:17:58 by drubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdlib.h>
 # include <pthread.h>
 # include <limits.h>
+# include <sys/_types.h>
 # include <sys/time.h>
 
 // Defines
@@ -69,6 +70,10 @@ void		ft_args_to_params(char *argv[], t_data *data);
 
 // Utils
 void		ft_error(char *str);
+u_int64_t	set_time(void);
+int			philo_usleep(useconds_t limit);
+
+
 
 // Lib Utils
 long long	ft_atoi(const char *str);

@@ -1,41 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.c                                            :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: drubio-m <drubio-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/03 17:34:18 by drubio-m          #+#    #+#             */
-/*   Updated: 2023/09/26 15:03:32 by drubio-m         ###   ########.fr       */
+/*   Created: 2023/09/26 11:50:26 by drubio-m          #+#    #+#             */
+/*   Updated: 2023/09/26 18:20:11 by drubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-/* void	ft_leaks(void)
-{
-	system("leaks -q philo");
-} */
 
-int	main(int argc, char *argv[])
+u_int64_t	set_time(void)
 {
-	t_data	data;
+	struct timeval	time;
 
-	//atexit(ft_leaks);
-	ft_parse_arguments(argc, argv, &data);
-	set_time();
-	printf("Argumentos parseados\n");
-	//init_philos(&data);
-	printf("Philos iniciados\n");
-	return (0);
+	if (gettimeofday(&time, NULL))
+		ft_error("Failed to get time of the day");
+//	printf("Este es el tiempo en microsegundos %llu\n", time.tv_sec * (u_int64_t)1000 + time.tv_usec / 1000);
+	return (time.tv_sec * (u_int64_t)1000 + time.tv_usec / 1000);
 }
 
-/*
-ARGUMENTOS
-1. number_of_philosophers 
-2. time_to_die 
-3. time_to_eat
-4. time_to_sleep
-5. [number_of_times_each_philosopher_must_eat]
+int	philo_usleep(useconds_t limit)
+{
+	u_int64_t	begin;
 
-*/
+	begin = set_time();
+	while ((set_time() - begin) < limit)
+		usleep(limit / 10);
+	return (0);
+}
