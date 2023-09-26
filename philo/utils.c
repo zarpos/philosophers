@@ -6,7 +6,7 @@
 /*   By: drubio-m <drubio-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 11:50:26 by drubio-m          #+#    #+#             */
-/*   Updated: 2023/09/26 18:20:11 by drubio-m         ###   ########.fr       */
+/*   Updated: 2023/09/26 18:21:50 by drubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ u_int64_t	set_time(void)
 
 int	philo_usleep(useconds_t limit)
 {
-	u_int64_t	begin;
+	uint64_t	begin;
 
 	begin = set_time();
 	while ((set_time() - begin) < limit)
