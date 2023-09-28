@@ -6,7 +6,7 @@
 /*   By: drubio-m <drubio-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 19:07:04 by drubio-m          #+#    #+#             */
-/*   Updated: 2023/09/19 00:01:00 by drubio-m         ###   ########.fr       */
+/*   Updated: 2023/09/28 10:20:19 by drubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,4 +65,5 @@ void	ft_args_to_params(char *argv[], t_data *data)
 	data->time_to_sleep = ft_atoi(argv[4]);
 	if (argv[5])
 		data->number_of_meals = ft_atoi(argv[5]);
+	data->start_time = set_time();
 }

@@ -6,7 +6,7 @@
 /*   By: drubio-m <drubio-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 18:09:33 by drubio-m          #+#    #+#             */
-/*   Updated: 2023/09/26 18:17:58 by drubio-m         ###   ########.fr       */
+/*   Updated: 2023/09/28 10:21:41 by drubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ typedef struct s_data
 	uint64_t		time_to_eat;
 	uint64_t		time_to_sleep;
 	uint64_t		number_of_meals;
+	uint64_t		start_time;
 	t_philo			*philo;
 }	t_data;
 
@@ -72,11 +73,12 @@ void		ft_args_to_params(char *argv[], t_data *data);
 void		ft_error(char *str);
 u_int64_t	set_time(void);
 int			philo_usleep(useconds_t limit);
+void		print_action(t_philo *philo, char *action);
+
 
 
 
 // Lib Utils
 long long	ft_atoi(const char *str);
 
-void	ft_leaks(void);
 #endif
