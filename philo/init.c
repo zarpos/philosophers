@@ -6,7 +6,7 @@
 /*   By: drubio-m <drubio-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 17:22:09 by drubio-m          #+#    #+#             */
-/*   Updated: 2023/09/26 11:49:34 by drubio-m         ###   ########.fr       */
+/*   Updated: 2023/09/28 13:55:05 by drubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	init_philos(t_data	*data)
 }
 
 // In this function we will alloc memory for the mutex and initiate them
-void	init_mutex(t_philo *philo, t_data *data)
+void	alloc_mutex(t_philo *philo, t_data *data)
 {
 	int	i;
 
@@ -88,4 +88,13 @@ void	init_mutex(t_philo *philo, t_data *data)
 		printf("Dirección del lock(%d): %p\n\n", philo[i].id, (void *)philo[i].lock);
 		i++;
 	}
+}
+
+// In this function we will initiate the mutexs allocated before
+void	init_mutex(t_philo *philo, t_data *data)
+{
+	pthread_mutex_init(&philo->left_fork, NULL);
+	pthread_mutex_init(&philo->right_fork, NULL);
+	pthread_mutex_init(&philo->print, NULL);
+	pthread_mutex_init(&philo->lock, NULL);
 }
