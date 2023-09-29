@@ -6,7 +6,7 @@
 /*   By: drubio-m <drubio-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 18:09:33 by drubio-m          #+#    #+#             */
-/*   Updated: 2023/09/28 13:33:19 by drubio-m         ###   ########.fr       */
+/*   Updated: 2023/09/29 14:53:39 by drubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ typedef struct s_philo
 void		*routine(void *philo);
 void		init_philos(t_data	*data);
 void		alloc_mutex(t_philo *philo, t_data *data);
-void		init_mutex(t_philo *philo, t_data *data);
+void		init_mutex(t_philo *philo);
 
 
 // Parse

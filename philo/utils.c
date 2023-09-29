@@ -6,7 +6,7 @@
 /*   By: drubio-m <drubio-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 11:50:26 by drubio-m          #+#    #+#             */
-/*   Updated: 2023/09/28 10:21:17 by drubio-m         ###   ########.fr       */
+/*   Updated: 2023/09/29 14:50:00 by drubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ u_int64_t	set_time(void)
 	struct timeval	time;
 
 	if (gettimeofday(&time, NULL))
-		ft_error("Failed to get time of the day");	
+		ft_error("Failed to get time of the day");
 	return (time.tv_sec * (u_int64_t)1000 + time.tv_usec / 1000);
 }
 
