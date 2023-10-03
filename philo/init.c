@@ -6,7 +6,7 @@
 /*   By: drubio-m <drubio-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 17:22:09 by drubio-m          #+#    #+#             */
-/*   Updated: 2023/09/29 14:56:59 by drubio-m         ###   ########.fr       */
+/*   Updated: 2023/10/02 17:22:17 by drubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,7 @@ void	*routine(void *philo_no_casted)
 	t_philo	*philo;
 
 	philo = philo_no_casted;
-	printf("Hola soy el thread %d \n", philo->id);
-	printf("\n");
+
 	return (NULL);
 }
 
@@ -88,18 +87,17 @@ void	alloc_mutex(t_philo *philo, t_data *data)
 		i++;
 	}
 	init_mutex(philo);
-
 }
 
 // In this function we will initiate the mutexs allocated before
 void	init_mutex(t_philo *philo)
 {
 	if (pthread_mutex_init(philo->left_fork, NULL))
-		printf("El mutex no ha podido ser incializado\n");
+		ft_error("Failed to init mutex");
 	if (pthread_mutex_init(philo->right_fork, NULL))
-		printf("El mutex no ha podido ser incializado\n");
+		ft_error("Failed to init mutex");
 	if (pthread_mutex_init(philo->print, NULL))
-		printf("El mutex no ha podido ser incializado\n");
+		ft_error("Failed to init mutex");
 	if (pthread_mutex_init(philo->lock, NULL))
-		printf("El mutex no ha podido ser incializado\n");
+		ft_error("Failed to init mutex");
 }
