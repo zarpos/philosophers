@@ -6,7 +6,7 @@
 /*   By: drubio-m <drubio-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 18:09:33 by drubio-m          #+#    #+#             */
-/*   Updated: 2023/09/29 14:53:39 by drubio-m         ###   ########.fr       */
+/*   Updated: 2023/10/04 17:30:58 by drubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,16 @@ typedef struct s_data	t_data;
 
 typedef struct s_data
 {
-	int				number_of_philosophers;
+	int				nb_philos;
 	pthread_t		thread_id;
 	uint64_t		time_to_die;
 	uint64_t		time_to_eat;
 	uint64_t		time_to_sleep;
 	uint64_t		number_of_meals;
 	uint64_t		start_time;
+	pthread_mutex_t	*print;
+	pthread_mutex_t	*lock;
+	pthread_mutex_t	*forks;
 	t_philo			*philo;
 }	t_data;
 
@@ -63,20 +66,17 @@ void		init_philos(t_data	*data);
 void		alloc_mutex(t_philo *philo, t_data *data);
 void		init_mutex(t_philo *philo);
 
-
 // Parse
 void		ft_parse_arguments(int argc, char *argv[], t_data *data);
 void		ft_check_valid_args(int argc, char *argv[]);
 void		ft_fits_in_int(char *argv[]);
 void		ft_args_to_params(char *argv[], t_data *data);
 
-
 // Utils
 void		ft_error(char *str);
 u_int64_t	set_time(void);
 int			philo_usleep(useconds_t limit);
 void		print_action(t_philo *philo, char *action);
-
 
 // Lib Utils
 long long	ft_atoi(const char *str);

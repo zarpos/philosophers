@@ -6,7 +6,7 @@
 /*   By: drubio-m <drubio-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 17:22:09 by drubio-m          #+#    #+#             */
-/*   Updated: 2023/10/02 17:22:17 by drubio-m         ###   ########.fr       */
+/*   Updated: 2023/10/04 17:34:55 by drubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,36 @@ void	*routine(void *philo_no_casted)
 	return (NULL);
 }
 
+void	alloc_mutex(t_philo *philo, t_data *data)
+{
+	data->philo = malloc(sizeof(t_philo) * data->nb_philos);
+	if (!data->philo)
+		ft_error("Failed to alloc memory");
+	data->thread_id = malloc(sizeof(pthread_t) * data->nb_philos);
+	if (!data->thread_id)
+		ft_error("Failed to alloc memory");
+	data->forks = malloc(sizeof(pthread_mutex_t) * data->nb_philos);
+	if (!data->forks)
+		ft_error("Failed to alloc memory");
+	data->lock = malloc(sizeof(pthread_mutex_t) * sizeof(data->nb_philos));
+	if (!data->lock)
+		ft_error("Failed to alloc memory");
+	data->print = malloc(sizeof(pthread_mutex_t) * sizeof(data->nb_philos));
+	if (!data->print)
+		ft_error("Failed to alloc memory");
+}
+
+void	init_philos(t_data	*data)
+{
+
+}
+
+void	init_mutex(t_philo *philo)
+{
+
+}
+
+/*
 // It initializes the philos struct with the data struct
 void	init_philos(t_data	*data)
 {
@@ -60,13 +90,13 @@ void	init_philos(t_data	*data)
 	}	
 }
 
-// In this function we will alloc memory for the mutex and initiate them
+//In this function we will alloc memory for the mutex and initiate them
 void	alloc_mutex(t_philo *philo, t_data *data)
 {
 	int	i;
 
-	i = 0;
-	while (i < data->number_of_philosophers)
+	i = -1;
+	while (++i < data->number_of_philosophers)
 	{
 		philo[i].left_fork = malloc(sizeof(pthread_mutex_t));
 		if (!philo[i].left_fork)
@@ -84,10 +114,10 @@ void	alloc_mutex(t_philo *philo, t_data *data)
 		if (!philo[i].lock)
 			ft_error("Failed to alloc memory for lock");
 		printf("Dirección del lock(%d): %p\n\n", philo[i].id, (void *)philo[i].lock);
-		i++;
 	}
 	init_mutex(philo);
 }
+
 
 // In this function we will initiate the mutexs allocated before
 void	init_mutex(t_philo *philo)
@@ -101,3 +131,15 @@ void	init_mutex(t_philo *philo)
 	if (pthread_mutex_init(philo->lock, NULL))
 		ft_error("Failed to init mutex");
 }
+*/
+
+/*
+COSAS QUE TENGO QUE HACER:
+
+1. En la reserva de los mutex, tengo que acceder a la 
+estructura de data para reservar memoria para el mutex que se llama forks
+
+2. Para reservar memoria para los philos lo tengo que hacer desde data
+
+3. Para iniciar los l_fork y r_fork del philo tengo que tener cuidado
+*/
