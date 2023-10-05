@@ -6,7 +6,7 @@
 /*   By: drubio-m <drubio-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 19:07:04 by drubio-m          #+#    #+#             */
-/*   Updated: 2023/09/28 10:20:19 by drubio-m         ###   ########.fr       */
+/*   Updated: 2023/10/05 16:34:28 by drubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	ft_fits_in_int(char *argv[])
 // This function converts the arguments to the data struct
 void	ft_args_to_params(char *argv[], t_data *data)
 {
-	data->number_of_philosophers = ft_atoi(argv[1]);
+	data->nb_philos = ft_atoi(argv[1]);
 	data->time_to_die = ft_atoi(argv[2]);
 	data->time_to_eat = ft_atoi(argv[3]);
 	data->time_to_sleep = ft_atoi(argv[4]);
