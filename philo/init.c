@@ -6,19 +6,32 @@
 /*   By: drubio-m <drubio-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 17:22:09 by drubio-m          #+#    #+#             */
-/*   Updated: 2023/10/05 17:41:48 by drubio-m         ###   ########.fr       */
+/*   Updated: 2023/10/11 21:56:38 by drubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
 // Routine for the philos
+// They lock and unlock the print mutex to avoid printing at the same time
 void	*routine(void *philo_no_casted)
 {
 	t_philo	*philo;
 
 	philo = philo_no_casted;
-	printf("Hola soy el philo %d\n", philo->id);
+	//
+	printf("Hola que tal soy el principio de la función routine\n");
+	//
+	pthread_mutex_lock(philo->print);
+	pthread_mutex_unlock(philo->print);
+	if(philo->id % 2 == 0)
+		philo_usleep(200);
+	pthread_mutex_lock(philo->print);
+	philo_eat(philo);
+	pthread_mutex_unlock(philo->print);
+	//
+	printf("Hola que tal soy el final de la función routine\n");
+	//
 	return (NULL);
 }
 
@@ -69,11 +82,13 @@ void	init_philos(t_data	*data)
 		init_mutex(data, i);
 		data->philo[i].id = i + 1;
 		data->philo[i].meal_counter = 0;
-		data->philo[i].status = 0;
+		data->philo[i].finish_program = 0;
 	}
 	i = -1;
 	while (++i < data->nb_philos)
 		pthread_create(&(data->thread_id[i]), NULL, routine, &(data->philo[i]));
+	//
+	printf("Hola que tal acabo de crear los hilos\n");
 }
 
 /*
