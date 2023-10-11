@@ -6,7 +6,7 @@
 /*   By: drubio-m <drubio-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 18:09:33 by drubio-m          #+#    #+#             */
-/*   Updated: 2023/10/11 21:54:20 by drubio-m         ###   ########.fr       */
+/*   Updated: 2023/10/12 00:05:51 by drubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@
 # include <sys/time.h>
 
 // Defines
-# define TAKE_FORK "🍴has taken a fork🍴"
-# define THINKING "🤔is thinking🤔"
-# define SLEEPING "💤is sleeping💤"
-# define EATING "🍝is eating🍝"
-# define DIED "💀died💀"
+# define TAKE_FORK "has taken a fork"
+# define THINKING "is thinking"
+# define SLEEPING "is sleeping"
+# define EATING "is eating"
+# define DIED "died"
 
 // Structs
 typedef struct s_philo	t_philo;
@@ -72,6 +72,7 @@ void		philo_eat(t_philo *philo);
 void		take_forks(t_philo *philo);
 void		drop_forks(t_philo *philo);
 
+
 // Parse
 void		ft_parse_arguments(int argc, char *argv[], t_data *data);
 void		ft_check_valid_args(int argc, char *argv[]);
@@ -83,6 +84,8 @@ void		ft_error(char *str);
 u_int64_t	set_time(void);
 int			philo_usleep(useconds_t limit);
 void		print_action(t_philo *philo, char *action);
+void		terminate_threads(t_data *data);
+void		free_misc(t_data *data);
 
 // Lib Utils
 long long	ft_atoi(const char *str);
