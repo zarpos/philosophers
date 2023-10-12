@@ -6,7 +6,7 @@
 /*   By: drubio-m <drubio-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 17:34:18 by drubio-m          #+#    #+#             */
-/*   Updated: 2023/10/12 13:10:36 by drubio-m         ###   ########.fr       */
+/*   Updated: 2023/10/12 16:41:54 by drubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,16 @@ int	main(int argc, char *argv[])
 	printf("%p\n", data.lock);
 	printf("%p\n", data.print);
 	printf("%llu\n", data.start_time);
-	
+
 //	printf("Memoria alocada\n");
 
-	pthread_mutex_lock(data.print);
+//	pthread_mutex_lock(data.print);
 //	printf("print lockeado\n");
-//	init_philos(&data);
+	init_philos(&data);
 //	printf("philos iniciados\n");
 //	pthread_mutex_unlock(data.print);
 //	printf("Print deslockeado\n");
-//	terminate_threads(&data);
+	terminate_threads(&data);
 //	printf("Hilos terminados\n");
 //	free_misc(&data);
 //	printf("Morralla borrada\n");
