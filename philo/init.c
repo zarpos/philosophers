@@ -6,7 +6,7 @@
 /*   By: drubio-m <drubio-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 17:22:09 by drubio-m          #+#    #+#             */
-/*   Updated: 2023/10/11 23:37:44 by drubio-m         ###   ########.fr       */
+/*   Updated: 2023/10/12 13:14:42 by drubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,18 +78,9 @@ void	init_philos(t_data	*data)
 		data->philo[i].id = i + 1;
 		data->philo[i].meal_counter = 0;
 		data->philo[i].finish_program = 0;
+		data->philo[i].last_meal = 0;
 	}
 	i = -1;
 	while (++i < data->nb_philos)
 		pthread_create(&(data->thread_id[i]), NULL, routine, &(data->philo[i]));
 }
-
-/*
-COSAS QUE TENGO QUE HACER:
-
-1. Hacer la parte de iniciar los mutex con el array que le he pasado en la iniciar philos
-2. Una vez haya hecho eso, toca iniciar el resto de philos
-*/
-
-//q: dime un input para el philo en el que haya 11 philos
-//a: 11 800 200 200

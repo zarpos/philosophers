@@ -6,7 +6,7 @@
 /*   By: drubio-m <drubio-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 11:50:26 by drubio-m          #+#    #+#             */
-/*   Updated: 2023/09/29 14:50:00 by drubio-m         ###   ########.fr       */
+/*   Updated: 2023/10/12 12:49:26 by drubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ u_int64_t	set_time(void)
 
 	if (gettimeofday(&time, NULL))
 		ft_error("Failed to get time of the day");
-	return (time.tv_sec * (u_int64_t)1000 + time.tv_usec / 1000);
+	return (time.tv_sec * (u_int64_t)1000 + (time.tv_usec / 1000));
 }
 
 // We check if the time has passed the limit
@@ -39,7 +39,10 @@ int	philo_usleep(useconds_t limit)
 // This function will print the philo action, protected by a mutex
 void	print_action(t_philo *philo, char *action)
 {
+	int	id;
+
+	id = philo->id;
 	pthread_mutex_lock(philo->print);
-	printf("%llu %d %s\n", set_time() - philo->data->start_time, philo->id, action);
+	printf("%llu %d %s\n", set_time() - philo->data->start_time, id, action);
 	pthread_mutex_unlock(philo->print);
 }
