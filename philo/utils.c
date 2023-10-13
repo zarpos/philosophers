@@ -6,7 +6,7 @@
 /*   By: drubio-m <drubio-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 11:50:26 by drubio-m          #+#    #+#             */
-/*   Updated: 2023/10/12 12:49:26 by drubio-m         ###   ########.fr       */
+/*   Updated: 2023/10/13 21:35:09 by drubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,5 @@ void	print_action(t_philo *philo, char *action)
 	int	id;
 
 	id = philo->id;
-	pthread_mutex_lock(philo->print);
 	printf("%llu %d %s\n", set_time() - philo->data->start_time, id, action);
-	pthread_mutex_unlock(philo->print);
 }

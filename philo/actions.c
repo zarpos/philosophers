@@ -6,7 +6,7 @@
 /*   By: drubio-m <drubio-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 19:57:08 by drubio-m          #+#    #+#             */
-/*   Updated: 2023/10/12 16:46:24 by drubio-m         ###   ########.fr       */
+/*   Updated: 2023/10/13 17:20:12 by drubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 
 void	take_forks(t_philo *philo)
 {
-	pthread_mutex_lock(philo->right_fork);
+//	pthread_mutex_lock(philo->right_fork);
 	print_action(philo, TAKE_FORK);
-	pthread_mutex_lock(philo->left_fork);
+//	pthread_mutex_lock(philo->left_fork);
 	print_action(philo, TAKE_FORK);
 }
 
 void	drop_forks(t_philo *philo)
 {
-	pthread_mutex_unlock(philo->right_fork);
-	pthread_mutex_unlock(philo->left_fork);
+//	pthread_mutex_unlock(philo->right_fork);
+//	pthread_mutex_unlock(philo->left_fork);
 	print_action(philo, SLEEPING);
 	philo_usleep(philo->data->time_to_sleep);
 }
@@ -34,16 +34,17 @@ void	philo_eat(t_philo *philo)
 {
 	while (!philo->finish_program)
 	{
-		pthread_mutex_unlock(philo->print);
+///		pthread_mutex_unlock(philo->print);
 		take_forks(philo);
-		pthread_mutex_lock(philo->lock);
+	//	pthread_mutex_lock(philo->lock);
 		print_action(philo, EATING);
 		philo->last_meal = set_time() - philo->data->start_time;
-		pthread_mutex_unlock(philo->lock);
+		printf("%llu\n", set_time() - philo->data->start_time);
+	//	pthread_mutex_unlock(philo->lock);
 		philo_usleep(philo->data->time_to_eat);
 		drop_forks(philo);
 		print_action(philo, THINKING);
-		pthread_mutex_lock(philo->print);
+	//	pthread_mutex_lock(philo->print);
 	}
 }
 
