@@ -6,7 +6,7 @@
 /*   By: drubio-m <drubio-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 19:57:08 by drubio-m          #+#    #+#             */
-/*   Updated: 2023/10/13 17:20:12 by drubio-m         ###   ########.fr       */
+/*   Updated: 2023/10/14 19:28:58 by drubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ void	philo_eat(t_philo *philo)
 	//	pthread_mutex_lock(philo->lock);
 		print_action(philo, EATING);
 		philo->last_meal = set_time() - philo->data->start_time;
-		printf("%llu\n", set_time() - philo->data->start_time);
 	//	pthread_mutex_unlock(philo->lock);
 		philo_usleep(philo->data->time_to_eat);
 		drop_forks(philo);

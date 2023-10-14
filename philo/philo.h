@@ -6,7 +6,7 @@
 /*   By: drubio-m <drubio-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 18:09:33 by drubio-m          #+#    #+#             */
-/*   Updated: 2023/10/12 00:05:51 by drubio-m         ###   ########.fr       */
+/*   Updated: 2023/10/14 19:25:35 by drubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@
 # include <sys/time.h>
 
 // Defines
-# define TAKE_FORK "has taken a fork"
-# define THINKING "is thinking"
-# define SLEEPING "is sleeping"
-# define EATING "is eating"
-# define DIED "died"
+# define TAKE_FORK "🍴Has taken a fork🍴"
+# define THINKING "🤔Is thinking🤔"
+# define SLEEPING "💤Is sleeping💤"
+# define EATING "🍝Is eating🍝"
+# define DIED "💀Died💀"
 
 // Structs
 typedef struct s_philo	t_philo;

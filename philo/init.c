@@ -6,7 +6,7 @@
 /*   By: drubio-m <drubio-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 17:22:09 by drubio-m          #+#    #+#             */
-/*   Updated: 2023/10/13 21:55:45 by drubio-m         ###   ########.fr       */
+/*   Updated: 2023/10/14 19:27:40 by drubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,12 @@ void	*routine(void *philo_no_casted)
 	philo = philo_no_casted;
 	if (philo->id % 2 == 0)
 		philo_usleep(200);
-	print_action(philo, EATING);
-	//philo_eat(philo);
+	philo_eat(philo);
 	return (NULL);
 }
 
+// In this function we are allocating the memory for the mutex
+// And also we are setting the start time
 void	alloc_mutex(t_data *data)
 {
 	data->philo = malloc(sizeof(t_philo) * data->nb_philos);
@@ -76,6 +77,7 @@ void	init_philos(t_data	*data)
 		data->philo[i].meal_counter = 0;
 		data->philo[i].finish_program = 0;
 		data->philo[i].last_meal = 0;
+		data->philo[i].data = data;
 	}
 	i = -1;
 	while (++i < data->nb_philos)
