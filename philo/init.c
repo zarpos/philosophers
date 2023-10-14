@@ -6,7 +6,7 @@
 /*   By: drubio-m <drubio-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 17:22:09 by drubio-m          #+#    #+#             */
-/*   Updated: 2023/10/14 19:27:40 by drubio-m         ###   ########.fr       */
+/*   Updated: 2023/10/14 21:15:31 by drubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ void	*routine(void *philo_no_casted)
 	philo = philo_no_casted;
 	if (philo->id % 2 == 0)
 		philo_usleep(200);
-	philo_eat(philo);
+	printf("Soy el philo %d y estoy antes de la rutina\n", philo->id);
+//	philo_eat(philo);
 	return (NULL);
 }
 
@@ -74,6 +75,7 @@ void	init_philos(t_data	*data)
 	{
 		init_mutex(data, i);
 		data->philo[i].id = i + 1;
+		printf("Este es el valor de philo->id: %d\n", data->philo[i].id);
 		data->philo[i].meal_counter = 0;
 		data->philo[i].finish_program = 0;
 		data->philo[i].last_meal = 0;
@@ -81,5 +83,8 @@ void	init_philos(t_data	*data)
 	}
 	i = -1;
 	while (++i < data->nb_philos)
+	{
+		printf("Voy a crear el thread %d\n", i);
 		pthread_create(&(data->thread_id[i]), NULL, routine, &(data->philo[i]));
+	}
 }

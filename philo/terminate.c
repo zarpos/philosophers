@@ -6,7 +6,7 @@
 /*   By: drubio-m <drubio-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 23:57:58 by drubio-m          #+#    #+#             */
-/*   Updated: 2023/10/13 16:54:00 by drubio-m         ###   ########.fr       */
+/*   Updated: 2023/10/14 21:16:56 by drubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,20 +25,18 @@ void	terminate_threads(t_data *data)
 {
 	int		i;
 
-	i = 0;
-	while (i < data->nb_philos)
+	i = -1;
+	while (++i < data->nb_philos)
 	{
-		pthread_mutex_unlock(data->philo[i].lock);
+//		pthread_mutex_unlock(data->philo[i].lock);
 		pthread_join(data->thread_id[i], NULL);
-		i++;
 	}
 
-	i = 0;
-	while (i < data->nb_philos)
+	i = -1;
+	while (++i < data->nb_philos)
 	{
 		pthread_mutex_destroy(&(data->lock[i]));
 		pthread_mutex_destroy(&(data->forks[i]));
 		pthread_mutex_destroy(&(data->print[i]));
-		i++;
 	}
 }
