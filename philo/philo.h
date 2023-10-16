@@ -6,7 +6,7 @@
 /*   By: drubio-m <drubio-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 18:09:33 by drubio-m          #+#    #+#             */
-/*   Updated: 2023/10/14 19:25:35 by drubio-m         ###   ########.fr       */
+/*   Updated: 2023/10/16 02:01:37 by drubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct s_data	t_data;
 typedef struct s_data
 {
 	int				nb_philos;
+	int				finish_program;
 	pthread_t		*thread_id;
 	uint64_t		time_to_die;
 	uint64_t		time_to_eat;
@@ -52,7 +53,6 @@ typedef struct s_philo
 {
 	int					id;
 	int					meal_counter;
-	int					finish_program;
 	uint64_t			last_meal;
 	pthread_mutex_t		*left_fork;
 	pthread_mutex_t		*right_fork;
@@ -71,7 +71,8 @@ void		init_mutex(t_data *data, int i);
 void		philo_eat(t_philo *philo);
 void		take_forks(t_philo *philo);
 void		drop_forks(t_philo *philo);
-
+void		monitor(t_data *data);
+int			killer(t_data *data, int i);
 
 // Parse
 void		ft_parse_arguments(int argc, char *argv[], t_data *data);
