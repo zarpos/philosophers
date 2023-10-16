@@ -6,7 +6,7 @@
 /*   By: drubio-m <drubio-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 17:34:18 by drubio-m          #+#    #+#             */
-/*   Updated: 2023/09/12 20:02:27 by drubio-m         ###   ########.fr       */
+/*   Updated: 2023/10/16 02:09:32 by drubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,13 @@ int	main(int argc, char *argv[])
 	t_data	data;
 
 	ft_parse_arguments(argc, argv, &data);
-	printf("\nooleeee");
+	alloc_mutex(&data);
+	pthread_mutex_lock(data.print);
+	init_philos(&data);
+	pthread_mutex_unlock(data.print);
+	monitor(&data);
+	terminate_threads(&data);
+	free_misc(&data);
 	return (0);
 }
 

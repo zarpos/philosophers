@@ -6,7 +6,7 @@
 /*   By: drubio-m <drubio-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 19:04:18 by drubio-m          #+#    #+#             */
-/*   Updated: 2023/09/13 21:43:49 by drubio-m         ###   ########.fr       */
+/*   Updated: 2023/10/04 11:11:03 by drubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,3 @@ void	ft_error(char *str)
 	printf("%s%s%s", "\033[0;31mError: \033[0m", str, "\n");
 	exit(EXIT_FAILURE);
 }
-

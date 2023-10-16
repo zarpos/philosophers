@@ -6,14 +6,14 @@
 #    By: drubio-m <drubio-m@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/31 15:19:02 by drubio-m          #+#    #+#              #
-#    Updated: 2023/09/13 12:23:50 by drubio-m         ###   ########.fr        #
+#    Updated: 2023/10/16 02:34:23 by drubio-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = philo
 CC = gcc
-FLAGS = -Wall -Wextra -Werror #-g3  -fsanitize=address
-SRC = philo.c lib_utils.c parse_params.c
+FLAGS = -Wall -Wextra -Werror #-g3 -fsanitize=thread
+SRC = philo.c lib_utils.c parse_params.c init.c utils.c actions.c terminate.c
 OBJ_FOLDER = obj
 OBJS = $(addprefix $(OBJ_FOLDER)/, $(SRC:%.c=%.o))
 RM = rm -rf
@@ -34,7 +34,7 @@ $(NAME): $(OBJS)
 	@echo 				'     \|__|     \|__|\|__|\|__|\|_______|\|_______| '
 	@echo "\033[0m\n"
 	@$(CC) $(FLAGS) $(OBJS) -o $(NAME)
-	   
+   
 $(OBJ_FOLDER)/%.o: %.c
 	@mkdir -p $(OBJ_FOLDER)
 	@$(CC) $(FLAGS) -c $< -o $@
