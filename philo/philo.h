@@ -6,7 +6,7 @@
 /*   By: drubio-m <drubio-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 18:09:33 by drubio-m          #+#    #+#             */
-/*   Updated: 2023/10/16 02:01:37 by drubio-m         ###   ########.fr       */
+/*   Updated: 2023/10/17 21:52:25 by drubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@
 # include <sys/time.h>
 
 // Defines
-# define TAKE_FORK "🍴Has taken a fork🍴"
-# define THINKING "🤔Is thinking🤔"
-# define SLEEPING "💤Is sleeping💤"
-# define EATING "🍝Is eating🍝"
-# define DIED "💀Died💀"
+# define TAKE_FORK "Has taken a fork"
+# define THINKING "Is thinking"
+# define SLEEPING "Is sleeping"
+# define EATING "Is eating"
+# define DIED "Died"
 
 // Structs
 typedef struct s_philo	t_philo;
@@ -41,7 +41,8 @@ typedef struct s_data
 	uint64_t		time_to_die;
 	uint64_t		time_to_eat;
 	uint64_t		time_to_sleep;
-	uint64_t		number_of_meals;
+	int				number_of_meals;
+	int				ph_served;
 	uint64_t		start_time;
 	pthread_mutex_t	*print;
 	pthread_mutex_t	*lock;
@@ -53,6 +54,7 @@ typedef struct s_philo
 {
 	int					id;
 	int					meal_counter;
+	int					fill;
 	uint64_t			last_meal;
 	pthread_mutex_t		*left_fork;
 	pthread_mutex_t		*right_fork;
@@ -73,6 +75,7 @@ void		take_forks(t_philo *philo);
 void		drop_forks(t_philo *philo);
 void		monitor(t_data *data);
 int			killer(t_data *data, int i);
+int			count_fat(t_data *data, int i);
 
 // Parse
 void		ft_parse_arguments(int argc, char *argv[], t_data *data);

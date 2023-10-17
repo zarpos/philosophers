@@ -6,7 +6,7 @@
 /*   By: drubio-m <drubio-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 17:22:09 by drubio-m          #+#    #+#             */
-/*   Updated: 2023/10/16 02:04:03 by drubio-m         ###   ########.fr       */
+/*   Updated: 2023/10/17 21:30:15 by drubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ void	alloc_mutex(t_data *data)
 		ft_error("Failed to alloc memory");
 	data->start_time = set_time();
 	data->finish_program = 0;
+	data->ph_served = 0;
 }
 
 // In this function we initiate the mutex and asign the forks 
@@ -79,6 +80,7 @@ void	init_philos(t_data	*data)
 		data->philo[i].id = i + 1;
 		data->philo[i].meal_counter = 0;
 		data->philo[i].last_meal = 0;
+		data->philo[i].fill = 0;
 		data->philo[i].data = data;
 	}
 	i = -1;

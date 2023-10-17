@@ -6,7 +6,7 @@
 /*   By: drubio-m <drubio-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 11:50:26 by drubio-m          #+#    #+#             */
-/*   Updated: 2023/10/16 02:06:53 by drubio-m         ###   ########.fr       */
+/*   Updated: 2023/10/17 21:53:33 by drubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,13 @@ int	philo_usleep(useconds_t limit)
 // This function will print the philo action, protected by a mutex
 void	print_action(t_philo *philo, char *action)
 {
-	int	id;
+	int			id;
+	uint64_t	time;
 
 	pthread_mutex_lock(philo->print);
 	id = philo->id;
+	time = philo->data->start_time;
 	if (philo->data->finish_program == 0)
-		printf("%llu %d %s\n", set_time() - philo->data->start_time, id, action);
+		printf("%llums %d %s\n", set_time() - time, id, action);
 	pthread_mutex_unlock(philo->print);
 }
