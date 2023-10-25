@@ -6,7 +6,7 @@
 /*   By: drubio-m <drubio-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 23:57:58 by drubio-m          #+#    #+#             */
-/*   Updated: 2023/10/17 21:49:37 by drubio-m         ###   ########.fr       */
+/*   Updated: 2023/10/25 11:51:05 by drubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ int	killer(t_data *data, int i)
 	return (0);
 }
 
+// Liberates all the data to avoid leaks
 void	free_misc(t_data *data)
 {
 	free(data->philo);
@@ -82,6 +83,9 @@ void	free_misc(t_data *data)
 	free(data->print);
 }
 
+// With join we wait for the threads to end
+// before ending them, we unlock the mutex
+// At the end we need to destroy all the mutex
 void	terminate_threads(t_data *data)
 {
 	int		i;
