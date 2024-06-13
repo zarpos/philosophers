@@ -6,13 +6,13 @@
 #    By: drubio-m <drubio-m@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/31 15:19:02 by drubio-m          #+#    #+#              #
-#    Updated: 2023/10/17 21:49:32 by drubio-m         ###   ########.fr        #
+#    Updated: 2024/06/13 11:38:46 by drubio-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = philo
 CC = gcc
-FLAGS = -Wall -Wextra -Werror #-g3 -fsanitize=thread
+FLAGS = -Wall -Wextra -Werror -g3 -fsanitize=thread
 SRC = philo.c lib_utils.c parse_params.c init.c utils.c actions.c terminate.c
 OBJ_FOLDER = obj
 OBJS = $(addprefix $(OBJ_FOLDER)/, $(SRC:%.c=%.o))

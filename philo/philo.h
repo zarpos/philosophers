@@ -6,7 +6,7 @@
 /*   By: drubio-m <drubio-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 18:09:33 by drubio-m          #+#    #+#             */
-/*   Updated: 2023/10/17 21:52:25 by drubio-m         ###   ########.fr       */
+/*   Updated: 2024/06/13 11:34:16 by drubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,9 @@
 # include <stdlib.h>
 # include <pthread.h>
 # include <limits.h>
-# include <sys/_types.h>
+# include <sys/types.h>
 # include <sys/time.h>
+# include <stdint.h>
 
 // Defines
 # define TAKE_FORK "Has taken a fork"

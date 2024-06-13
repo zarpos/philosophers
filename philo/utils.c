@@ -6,7 +6,7 @@
 /*   By: drubio-m <drubio-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 11:50:26 by drubio-m          #+#    #+#             */
-/*   Updated: 2023/10/17 21:53:33 by drubio-m         ###   ########.fr       */
+/*   Updated: 2024/06/13 11:34:55 by drubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,6 @@ void	print_action(t_philo *philo, char *action)
 	id = philo->id;
 	time = philo->data->start_time;
 	if (philo->data->finish_program == 0)
-		printf("%llums %d %s\n", set_time() - time, id, action);
+		printf("%lums %d %s\n", set_time() - time, id, action);
 	pthread_mutex_unlock(philo->print);
 }
