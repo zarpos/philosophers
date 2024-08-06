@@ -6,13 +6,13 @@
 /*   By: drubio-m <drubio-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 19:57:08 by drubio-m          #+#    #+#             */
-/*   Updated: 2023/10/16 22:15:47 by drubio-m         ###   ########.fr       */
+/*   Updated: 2024/08/06 19:56:56 by drubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	take_forks(t_philo *philo)
+void take_forks(t_philo *philo)
 {
 	pthread_mutex_lock(philo->right_fork);
 	print_action(philo, TAKE_FORK);
@@ -20,15 +20,15 @@ void	take_forks(t_philo *philo)
 	print_action(philo, TAKE_FORK);
 }
 
-void	drop_forks(t_philo *philo)
-{	
+void drop_forks(t_philo *philo)
+{
 	pthread_mutex_unlock(philo->right_fork);
 	pthread_mutex_unlock(philo->left_fork);
 	print_action(philo, SLEEPING);
 	philo_usleep(philo->data->time_to_sleep);
 }
 
-// We need to lock and unlock the print mutex 
+// We need to lock and unlock the print mutex
 // to avoid data races when printing
 void	philo_eat(t_philo *philo)
 {

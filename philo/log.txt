@@ -1,0 +1,310 @@
+==================
+WARNING: ThreadSanitizer: double lock of a mutex (pid=218523)
+    #0 pthread_mutex_lock ../../../../src/libsanitizer/sanitizer_common/sanitizer_common_interceptors.inc:4240 (libtsan.so.0+0x53908)
+    #1 routine /home/drubio-m/Desktop/42Cursus/philosophers/philo/init.c:24 (philo+0x1bb0)
+
+  Location is heap block of size 40 at 0x7b0c00000030 allocated by main thread:
+    #0 malloc ../../../../src/libsanitizer/tsan/tsan_interceptors_posix.cpp:655 (libtsan.so.0+0x31c57)
+    #1 alloc_mutex /home/drubio-m/Desktop/42Cursus/philosophers/philo/init.c:46 (philo+0x1dbc)
+    #2 main /home/drubio-m/Desktop/42Cursus/philosophers/philo/philo.c:20 (philo+0x1418)
+
+  Mutex M0 (0x7b0c00000030) created at:
+    #0 pthread_mutex_lock ../../../../src/libsanitizer/sanitizer_common/sanitizer_common_interceptors.inc:4240 (libtsan.so.0+0x53908)
+    #1 main /home/drubio-m/Desktop/42Cursus/philosophers/philo/philo.c:21 (philo+0x1434)
+
+SUMMARY: ThreadSanitizer: double lock of a mutex /home/drubio-m/Desktop/42Cursus/philosophers/philo/init.c:24 in routine
+==================
+==================
+WARNING: ThreadSanitizer: lock-order-inversion (potential deadlock) (pid=218523)
+  Cycle in lock order graph: M0 (0x7b0c00000030) => M12 (0x7b3400000170) => M0
+
+  Mutex M12 acquired here while holding mutex M0 in main thread:
+    #0 pthread_mutex_lock ../../../../src/libsanitizer/sanitizer_common/sanitizer_common_interceptors.inc:4240 (libtsan.so.0+0x53908)
+    #1 monitor /home/drubio-m/Desktop/42Cursus/philosophers/philo/terminate.c:46 (philo+0x2af3)
+    #2 main /home/drubio-m/Desktop/42Cursus/philosophers/philo/philo.c:24 (philo+0x1468)
+
+    Hint: use TSAN_OPTIONS=second_deadlock_stack=1 to get more informative warning message
+
+  Mutex M0 acquired here while holding mutex M12 in thread T5:
+    #0 pthread_mutex_lock ../../../../src/libsanitizer/sanitizer_common/sanitizer_common_interceptors.inc:4240 (libtsan.so.0+0x53908)
+    #1 print_action /home/drubio-m/Desktop/42Cursus/philosophers/philo/utils.c:45 (philo+0x2486)
+    #2 philo_eat /home/drubio-m/Desktop/42Cursus/philosophers/philo/actions.c:43 (philo+0x27b4)
+    #3 routine /home/drubio-m/Desktop/42Cursus/philosophers/philo/init.c:25 (philo+0x1bbc)
+
+  Thread T5 (tid=218529, running) created by main thread at:
+    #0 pthread_create ../../../../src/libsanitizer/tsan/tsan_interceptors_posix.cpp:969 (libtsan.so.0+0x605b8)
+    #1 init_philos /home/drubio-m/Desktop/42Cursus/philosophers/philo/init.c:88 (philo+0x22e9)
+    #2 main /home/drubio-m/Desktop/42Cursus/philosophers/philo/philo.c:22 (philo+0x1440)
+
+SUMMARY: ThreadSanitizer: lock-order-inversion (potential deadlock) /home/drubio-m/Desktop/42Cursus/philosophers/philo/terminate.c:46 in monitor
+==================
+==================
+WARNING: ThreadSanitizer: lock-order-inversion (potential deadlock) (pid=218523)
+  Cycle in lock order graph: M0 (0x7b0c00000030) => M3 (0x7b34000000f8) => M0
+
+  Mutex M3 acquired here while holding mutex M0 in main thread:
+    #0 pthread_mutex_lock ../../../../src/libsanitizer/sanitizer_common/sanitizer_common_interceptors.inc:4240 (libtsan.so.0+0x53908)
+    #1 monitor /home/drubio-m/Desktop/42Cursus/philosophers/philo/terminate.c:46 (philo+0x2af3)
+    #2 main /home/drubio-m/Desktop/42Cursus/philosophers/philo/philo.c:24 (philo+0x1468)
+
+    Hint: use TSAN_OPTIONS=second_deadlock_stack=1 to get more informative warning message
+
+  Mutex M0 acquired here while holding mutex M3 in thread T2:
+    #0 pthread_mutex_lock ../../../../src/libsanitizer/sanitizer_common/sanitizer_common_interceptors.inc:4240 (libtsan.so.0+0x53908)
+    #1 print_action /home/drubio-m/Desktop/42Cursus/philosophers/philo/utils.c:45 (philo+0x2486)
+    #2 philo_eat /home/drubio-m/Desktop/42Cursus/philosophers/philo/actions.c:43 (philo+0x27b4)
+    #3 routine /home/drubio-m/Desktop/42Cursus/philosophers/philo/init.c:25 (philo+0x1bbc)
+
+  Thread T2 (tid=218526, running) created by main thread at:
+    #0 pthread_create ../../../../src/libsanitizer/tsan/tsan_interceptors_posix.cpp:969 (libtsan.so.0+0x605b8)
+    #1 init_philos /home/drubio-m/Desktop/42Cursus/philosophers/philo/init.c:88 (philo+0x22e9)
+    #2 main /home/drubio-m/Desktop/42Cursus/philosophers/philo/philo.c:22 (philo+0x1440)
+
+SUMMARY: ThreadSanitizer: lock-order-inversion (potential deadlock) /home/drubio-m/Desktop/42Cursus/philosophers/philo/terminate.c:46 in monitor
+==================
+==================
+WARNING: ThreadSanitizer: lock-order-inversion (potential deadlock) (pid=218523)
+  Cycle in lock order graph: M14 (0x7b34000000a0) => M2 (0x7b3400000000) => M5 (0x7b3400000028) => M8 (0x7b3400000050) => M11 (0x7b3400000078) => M14
+
+  Mutex M2 acquired here while holding mutex M14 in thread T5:
+    #0 pthread_mutex_lock ../../../../src/libsanitizer/sanitizer_common/sanitizer_common_interceptors.inc:4240 (libtsan.so.0+0x53908)
+    #1 take_forks /home/drubio-m/Desktop/42Cursus/philosophers/philo/actions.c:19 (philo+0x25c0)
+    #2 philo_eat /home/drubio-m/Desktop/42Cursus/philosophers/philo/actions.c:38 (philo+0x26d6)
+    #3 routine /home/drubio-m/Desktop/42Cursus/philosophers/philo/init.c:25 (philo+0x1bbc)
+
+    Hint: use TSAN_OPTIONS=second_deadlock_stack=1 to get more informative warning message
+
+  Mutex M5 acquired here while holding mutex M2 in thread T1:
+    #0 pthread_mutex_lock ../../../../src/libsanitizer/sanitizer_common/sanitizer_common_interceptors.inc:4240 (libtsan.so.0+0x53908)
+    #1 take_forks /home/drubio-m/Desktop/42Cursus/philosophers/philo/actions.c:19 (philo+0x25c0)
+    #2 philo_eat /home/drubio-m/Desktop/42Cursus/philosophers/philo/actions.c:38 (philo+0x26d6)
+    #3 routine /home/drubio-m/Desktop/42Cursus/philosophers/philo/init.c:25 (philo+0x1bbc)
+
+  Mutex M8 acquired here while holding mutex M5 in thread T2:
+    #0 pthread_mutex_lock ../../../../src/libsanitizer/sanitizer_common/sanitizer_common_interceptors.inc:4240 (libtsan.so.0+0x53908)
+    #1 take_forks /home/drubio-m/Desktop/42Cursus/philosophers/philo/actions.c:19 (philo+0x25c0)
+    #2 philo_eat /home/drubio-m/Desktop/42Cursus/philosophers/philo/actions.c:38 (philo+0x26d6)
+    #3 routine /home/drubio-m/Desktop/42Cursus/philosophers/philo/init.c:25 (philo+0x1bbc)
+
+  Mutex M11 acquired here while holding mutex M8 in thread T3:
+    #0 pthread_mutex_lock ../../../../src/libsanitizer/sanitizer_common/sanitizer_common_interceptors.inc:4240 (libtsan.so.0+0x53908)
+    #1 take_forks /home/drubio-m/Desktop/42Cursus/philosophers/philo/actions.c:19 (philo+0x25c0)
+    #2 philo_eat /home/drubio-m/Desktop/42Cursus/philosophers/philo/actions.c:38 (philo+0x26d6)
+    #3 routine /home/drubio-m/Desktop/42Cursus/philosophers/philo/init.c:25 (philo+0x1bbc)
+
+  Mutex M14 acquired here while holding mutex M11 in thread T4:
+    #0 pthread_mutex_lock ../../../../src/libsanitizer/sanitizer_common/sanitizer_common_interceptors.inc:4240 (libtsan.so.0+0x53908)
+    #1 take_forks /home/drubio-m/Desktop/42Cursus/philosophers/philo/actions.c:19 (philo+0x25c0)
+    #2 philo_eat /home/drubio-m/Desktop/42Cursus/philosophers/philo/actions.c:38 (philo+0x26d6)
+    #3 routine /home/drubio-m/Desktop/42Cursus/philosophers/philo/init.c:25 (philo+0x1bbc)
+
+  Thread T5 (tid=218529, running) created by main thread at:
+    #0 pthread_create ../../../../src/libsanitizer/tsan/tsan_interceptors_posix.cpp:969 (libtsan.so.0+0x605b8)
+    #1 init_philos /home/drubio-m/Desktop/42Cursus/philosophers/philo/init.c:88 (philo+0x22e9)
+    #2 main /home/drubio-m/Desktop/42Cursus/philosophers/philo/philo.c:22 (philo+0x1440)
+
+  Thread T1 (tid=218525, running) created by main thread at:
+    #0 pthread_create ../../../../src/libsanitizer/tsan/tsan_interceptors_posix.cpp:969 (libtsan.so.0+0x605b8)
+    #1 init_philos /home/drubio-m/Desktop/42Cursus/philosophers/philo/init.c:88 (philo+0x22e9)
+    #2 main /home/drubio-m/Desktop/42Cursus/philosophers/philo/philo.c:22 (philo+0x1440)
+
+  Thread T2 (tid=218526, running) created by main thread at:
+    #0 pthread_create ../../../../src/libsanitizer/tsan/tsan_interceptors_posix.cpp:969 (libtsan.so.0+0x605b8)
+    #1 init_philos /home/drubio-m/Desktop/42Cursus/philosophers/philo/init.c:88 (philo+0x22e9)
+    #2 main /home/drubio-m/Desktop/42Cursus/philosophers/philo/philo.c:22 (philo+0x1440)
+
+  Thread T3 (tid=218527, running) created by main thread at:
+    #0 pthread_create ../../../../src/libsanitizer/tsan/tsan_interceptors_posix.cpp:969 (libtsan.so.0+0x605b8)
+    #1 init_philos /home/drubio-m/Desktop/42Cursus/philosophers/philo/init.c:88 (philo+0x22e9)
+    #2 main /home/drubio-m/Desktop/42Cursus/philosophers/philo/philo.c:22 (philo+0x1440)
+
+  Thread T4 (tid=218528, running) created by main thread at:
+    #0 pthread_create ../../../../src/libsanitizer/tsan/tsan_interceptors_posix.cpp:969 (libtsan.so.0+0x605b8)
+    #1 init_philos /home/drubio-m/Desktop/42Cursus/philosophers/philo/init.c:88 (philo+0x22e9)
+    #2 main /home/drubio-m/Desktop/42Cursus/philosophers/philo/philo.c:22 (philo+0x1440)
+
+SUMMARY: ThreadSanitizer: lock-order-inversion (potential deadlock) /home/drubio-m/Desktop/42Cursus/philosophers/philo/actions.c:19 in take_forks
+==================
+==================
+WARNING: ThreadSanitizer: lock-order-inversion (potential deadlock) (pid=218523)
+  Cycle in lock order graph: M0 (0x7b0c00000030) => M9 (0x7b3400000148) => M0
+
+  Mutex M9 acquired here while holding mutex M0 in main thread:
+    #0 pthread_mutex_lock ../../../../src/libsanitizer/sanitizer_common/sanitizer_common_interceptors.inc:4240 (libtsan.so.0+0x53908)
+    #1 monitor /home/drubio-m/Desktop/42Cursus/philosophers/philo/terminate.c:46 (philo+0x2af3)
+    #2 main /home/drubio-m/Desktop/42Cursus/philosophers/philo/philo.c:24 (philo+0x1468)
+
+    Hint: use TSAN_OPTIONS=second_deadlock_stack=1 to get more informative warning message
+
+  Mutex M0 acquired here while holding mutex M9 in thread T4:
+    #0 pthread_mutex_lock ../../../../src/libsanitizer/sanitizer_common/sanitizer_common_interceptors.inc:4240 (libtsan.so.0+0x53908)
+    #1 print_action /home/drubio-m/Desktop/42Cursus/philosophers/philo/utils.c:45 (philo+0x2486)
+    #2 philo_eat /home/drubio-m/Desktop/42Cursus/philosophers/philo/actions.c:43 (philo+0x27b4)
+    #3 routine /home/drubio-m/Desktop/42Cursus/philosophers/philo/init.c:25 (philo+0x1bbc)
+
+  Thread T4 (tid=218528, running) created by main thread at:
+    #0 pthread_create ../../../../src/libsanitizer/tsan/tsan_interceptors_posix.cpp:969 (libtsan.so.0+0x605b8)
+    #1 init_philos /home/drubio-m/Desktop/42Cursus/philosophers/philo/init.c:88 (philo+0x22e9)
+    #2 main /home/drubio-m/Desktop/42Cursus/philosophers/philo/philo.c:22 (philo+0x1440)
+
+SUMMARY: ThreadSanitizer: lock-order-inversion (potential deadlock) /home/drubio-m/Desktop/42Cursus/philosophers/philo/terminate.c:46 in monitor
+==================
+==================
+WARNING: ThreadSanitizer: lock-order-inversion (potential deadlock) (pid=218523)
+  Cycle in lock order graph: M0 (0x7b0c00000030) => M1 (0x7b34000000d0) => M0
+
+  Mutex M1 acquired here while holding mutex M0 in main thread:
+    #0 pthread_mutex_lock ../../../../src/libsanitizer/sanitizer_common/sanitizer_common_interceptors.inc:4240 (libtsan.so.0+0x53908)
+    #1 monitor /home/drubio-m/Desktop/42Cursus/philosophers/philo/terminate.c:46 (philo+0x2af3)
+    #2 main /home/drubio-m/Desktop/42Cursus/philosophers/philo/philo.c:24 (philo+0x1468)
+
+    Hint: use TSAN_OPTIONS=second_deadlock_stack=1 to get more informative warning message
+
+  Mutex M0 acquired here while holding mutex M1 in thread T1:
+    #0 pthread_mutex_lock ../../../../src/libsanitizer/sanitizer_common/sanitizer_common_interceptors.inc:4240 (libtsan.so.0+0x53908)
+    #1 print_action /home/drubio-m/Desktop/42Cursus/philosophers/philo/utils.c:45 (philo+0x2486)
+    #2 philo_eat /home/drubio-m/Desktop/42Cursus/philosophers/philo/actions.c:43 (philo+0x27b4)
+    #3 routine /home/drubio-m/Desktop/42Cursus/philosophers/philo/init.c:25 (philo+0x1bbc)
+
+  Thread T1 (tid=218525, running) created by main thread at:
+    #0 pthread_create ../../../../src/libsanitizer/tsan/tsan_interceptors_posix.cpp:969 (libtsan.so.0+0x605b8)
+    #1 init_philos /home/drubio-m/Desktop/42Cursus/philosophers/philo/init.c:88 (philo+0x22e9)
+    #2 main /home/drubio-m/Desktop/42Cursus/philosophers/philo/philo.c:22 (philo+0x1440)
+
+SUMMARY: ThreadSanitizer: lock-order-inversion (potential deadlock) /home/drubio-m/Desktop/42Cursus/philosophers/philo/terminate.c:46 in monitor
+==================
+==================
+WARNING: ThreadSanitizer: lock-order-inversion (potential deadlock) (pid=218523)
+  Cycle in lock order graph: M0 (0x7b0c00000030) => M6 (0x7b3400000120) => M0
+
+  Mutex M6 acquired here while holding mutex M0 in main thread:
+    #0 pthread_mutex_lock ../../../../src/libsanitizer/sanitizer_common/sanitizer_common_interceptors.inc:4240 (libtsan.so.0+0x53908)
+    #1 monitor /home/drubio-m/Desktop/42Cursus/philosophers/philo/terminate.c:46 (philo+0x2af3)
+    #2 main /home/drubio-m/Desktop/42Cursus/philosophers/philo/philo.c:24 (philo+0x1468)
+
+    Hint: use TSAN_OPTIONS=second_deadlock_stack=1 to get more informative warning message
+
+  Mutex M0 acquired here while holding mutex M6 in thread T3:
+    #0 pthread_mutex_lock ../../../../src/libsanitizer/sanitizer_common/sanitizer_common_interceptors.inc:4240 (libtsan.so.0+0x53908)
+    #1 print_action /home/drubio-m/Desktop/42Cursus/philosophers/philo/utils.c:45 (philo+0x2486)
+    #2 philo_eat /home/drubio-m/Desktop/42Cursus/philosophers/philo/actions.c:43 (philo+0x27b4)
+    #3 routine /home/drubio-m/Desktop/42Cursus/philosophers/philo/init.c:25 (philo+0x1bbc)
+
+  Thread T3 (tid=218527, running) created by main thread at:
+    #0 pthread_create ../../../../src/libsanitizer/tsan/tsan_interceptors_posix.cpp:969 (libtsan.so.0+0x605b8)
+    #1 init_philos /home/drubio-m/Desktop/42Cursus/philosophers/philo/init.c:88 (philo+0x22e9)
+    #2 main /home/drubio-m/Desktop/42Cursus/philosophers/philo/philo.c:22 (philo+0x1440)
+
+SUMMARY: ThreadSanitizer: lock-order-inversion (potential deadlock) /home/drubio-m/Desktop/42Cursus/philosophers/philo/terminate.c:46 in monitor
+==================
+==================
+WARNING: ThreadSanitizer: data race (pid=218523)
+  Write of size 4 at 0x7ffe051c02e4 by main thread (mutexes: write M9, write M0):
+    #0 count_fat /home/drubio-m/Desktop/42Cursus/philosophers/philo/terminate.c:28 (philo+0x2a29)
+    #1 monitor /home/drubio-m/Desktop/42Cursus/philosophers/philo/terminate.c:47 (philo+0x2b19)
+    #2 main /home/drubio-m/Desktop/42Cursus/philosophers/philo/philo.c:24 (philo+0x1468)
+
+  Previous read of size 4 at 0x7ffe051c02e4 by thread T3 (mutexes: write M0):
+    #0 print_action /home/drubio-m/Desktop/42Cursus/philosophers/philo/utils.c:48 (philo+0x24eb)
+    #1 drop_forks /home/drubio-m/Desktop/42Cursus/philosophers/philo/actions.c:27 (philo+0x264b)
+    #2 philo_eat /home/drubio-m/Desktop/42Cursus/philosophers/philo/actions.c:46 (philo+0x280f)
+    #3 routine /home/drubio-m/Desktop/42Cursus/philosophers/philo/init.c:25 (philo+0x1bbc)
+
+  Location is stack of main thread.
+
+  Location is global '<null>' at 0x000000000000 ([stack]+0x0000000202e4)
+
+  Mutex M9 (0x7b3400000148) created at:
+    #0 pthread_mutex_init ../../../../src/libsanitizer/tsan/tsan_interceptors_posix.cpp:1227 (libtsan.so.0+0x4bee1)
+    #1 init_mutex /home/drubio-m/Desktop/42Cursus/philosophers/philo/init.c:58 (philo+0x1ec2)
+    #2 init_philos /home/drubio-m/Desktop/42Cursus/philosophers/philo/init.c:79 (philo+0x2145)
+    #3 main /home/drubio-m/Desktop/42Cursus/philosophers/philo/philo.c:22 (philo+0x1440)
+
+  Mutex M0 (0x7b0c00000030) created at:
+    #0 pthread_mutex_lock ../../../../src/libsanitizer/sanitizer_common/sanitizer_common_interceptors.inc:4240 (libtsan.so.0+0x53908)
+    #1 main /home/drubio-m/Desktop/42Cursus/philosophers/philo/philo.c:21 (philo+0x1434)
+
+  Thread T3 (tid=218527, running) created by main thread at:
+    #0 pthread_create ../../../../src/libsanitizer/tsan/tsan_interceptors_posix.cpp:969 (libtsan.so.0+0x605b8)
+    #1 init_philos /home/drubio-m/Desktop/42Cursus/philosophers/philo/init.c:88 (philo+0x22e9)
+    #2 main /home/drubio-m/Desktop/42Cursus/philosophers/philo/philo.c:22 (philo+0x1440)
+
+SUMMARY: ThreadSanitizer: data race /home/drubio-m/Desktop/42Cursus/philosophers/philo/terminate.c:28 in count_fat
+==================
+==================
+WARNING: ThreadSanitizer: unlock of an unlocked mutex (or by a wrong thread) (pid=218523)
+    #0 pthread_mutex_unlock ../../../../src/libsanitizer/sanitizer_common/sanitizer_common_interceptors.inc:4254 (libtsan.so.0+0x3bff8)
+    #1 terminate_threads /home/drubio-m/Desktop/42Cursus/philosophers/philo/terminate.c:96 (philo+0x2e3e)
+    #2 main /home/drubio-m/Desktop/42Cursus/philosophers/philo/philo.c:25 (philo+0x1474)
+
+  Location is heap block of size 200 at 0x7b34000000d0 allocated by main thread:
+    #0 malloc ../../../../src/libsanitizer/tsan/tsan_interceptors_posix.cpp:655 (libtsan.so.0+0x31c57)
+    #1 alloc_mutex /home/drubio-m/Desktop/42Cursus/philosophers/philo/init.c:43 (philo+0x1d6e)
+    #2 main /home/drubio-m/Desktop/42Cursus/philosophers/philo/philo.c:20 (philo+0x1418)
+
+  Mutex M1 (0x7b34000000d0) created at:
+    #0 pthread_mutex_init ../../../../src/libsanitizer/tsan/tsan_interceptors_posix.cpp:1227 (libtsan.so.0+0x4bee1)
+    #1 init_mutex /home/drubio-m/Desktop/42Cursus/philosophers/philo/init.c:58 (philo+0x1ec2)
+    #2 init_philos /home/drubio-m/Desktop/42Cursus/philosophers/philo/init.c:79 (philo+0x2145)
+    #3 main /home/drubio-m/Desktop/42Cursus/philosophers/philo/philo.c:22 (philo+0x1440)
+
+SUMMARY: ThreadSanitizer: unlock of an unlocked mutex (or by a wrong thread) /home/drubio-m/Desktop/42Cursus/philosophers/philo/terminate.c:96 in terminate_threads
+==================
+==================
+WARNING: ThreadSanitizer: unlock of an unlocked mutex (or by a wrong thread) (pid=218523)
+    #0 pthread_mutex_unlock ../../../../src/libsanitizer/sanitizer_common/sanitizer_common_interceptors.inc:4254 (libtsan.so.0+0x3bff8)
+    #1 terminate_threads /home/drubio-m/Desktop/42Cursus/philosophers/philo/terminate.c:96 (philo+0x2e3e)
+    #2 main /home/drubio-m/Desktop/42Cursus/philosophers/philo/philo.c:25 (philo+0x1474)
+
+  Location is heap block of size 200 at 0x7b34000000d0 allocated by main thread:
+    #0 malloc ../../../../src/libsanitizer/tsan/tsan_interceptors_posix.cpp:655 (libtsan.so.0+0x31c57)
+    #1 alloc_mutex /home/drubio-m/Desktop/42Cursus/philosophers/philo/init.c:43 (philo+0x1d6e)
+    #2 main /home/drubio-m/Desktop/42Cursus/philosophers/philo/philo.c:20 (philo+0x1418)
+
+  Mutex M3 (0x7b34000000f8) created at:
+    #0 pthread_mutex_init ../../../../src/libsanitizer/tsan/tsan_interceptors_posix.cpp:1227 (libtsan.so.0+0x4bee1)
+    #1 init_mutex /home/drubio-m/Desktop/42Cursus/philosophers/philo/init.c:58 (philo+0x1ec2)
+    #2 init_philos /home/drubio-m/Desktop/42Cursus/philosophers/philo/init.c:79 (philo+0x2145)
+    #3 main /home/drubio-m/Desktop/42Cursus/philosophers/philo/philo.c:22 (philo+0x1440)
+
+SUMMARY: ThreadSanitizer: unlock of an unlocked mutex (or by a wrong thread) /home/drubio-m/Desktop/42Cursus/philosophers/philo/terminate.c:96 in terminate_threads
+==================
+==================
+WARNING: ThreadSanitizer: unlock of an unlocked mutex (or by a wrong thread) (pid=218523)
+    #0 pthread_mutex_unlock ../../../../src/libsanitizer/sanitizer_common/sanitizer_common_interceptors.inc:4254 (libtsan.so.0+0x3bff8)
+    #1 terminate_threads /home/drubio-m/Desktop/42Cursus/philosophers/philo/terminate.c:96 (philo+0x2e3e)
+    #2 main /home/drubio-m/Desktop/42Cursus/philosophers/philo/philo.c:25 (philo+0x1474)
+
+  Location is heap block of size 200 at 0x7b34000000d0 allocated by main thread:
+    #0 malloc ../../../../src/libsanitizer/tsan/tsan_interceptors_posix.cpp:655 (libtsan.so.0+0x31c57)
+    #1 alloc_mutex /home/drubio-m/Desktop/42Cursus/philosophers/philo/init.c:43 (philo+0x1d6e)
+    #2 main /home/drubio-m/Desktop/42Cursus/philosophers/philo/philo.c:20 (philo+0x1418)
+
+  Mutex M6 (0x7b3400000120) created at:
+    #0 pthread_mutex_init ../../../../src/libsanitizer/tsan/tsan_interceptors_posix.cpp:1227 (libtsan.so.0+0x4bee1)
+    #1 init_mutex /home/drubio-m/Desktop/42Cursus/philosophers/philo/init.c:58 (philo+0x1ec2)
+    #2 init_philos /home/drubio-m/Desktop/42Cursus/philosophers/philo/init.c:79 (philo+0x2145)
+    #3 main /home/drubio-m/Desktop/42Cursus/philosophers/philo/philo.c:22 (philo+0x1440)
+
+SUMMARY: ThreadSanitizer: unlock of an unlocked mutex (or by a wrong thread) /home/drubio-m/Desktop/42Cursus/philosophers/philo/terminate.c:96 in terminate_threads
+==================
+==================
+WARNING: ThreadSanitizer: unlock of an unlocked mutex (or by a wrong thread) (pid=218523)
+    #0 pthread_mutex_unlock ../../../../src/libsanitizer/sanitizer_common/sanitizer_common_interceptors.inc:4254 (libtsan.so.0+0x3bff8)
+    #1 terminate_threads /home/drubio-m/Desktop/42Cursus/philosophers/philo/terminate.c:96 (philo+0x2e3e)
+    #2 main /home/drubio-m/Desktop/42Cursus/philosophers/philo/philo.c:25 (philo+0x1474)
+
+  Location is heap block of size 200 at 0x7b34000000d0 allocated by main thread:
+    #0 malloc ../../../../src/libsanitizer/tsan/tsan_interceptors_posix.cpp:655 (libtsan.so.0+0x31c57)
+    #1 alloc_mutex /home/drubio-m/Desktop/42Cursus/philosophers/philo/init.c:43 (philo+0x1d6e)
+    #2 main /home/drubio-m/Desktop/42Cursus/philosophers/philo/philo.c:20 (philo+0x1418)
+
+  Mutex M12 (0x7b3400000170) created at:
+    #0 pthread_mutex_init ../../../../src/libsanitizer/tsan/tsan_interceptors_posix.cpp:1227 (libtsan.so.0+0x4bee1)
+    #1 init_mutex /home/drubio-m/Desktop/42Cursus/philosophers/philo/init.c:58 (philo+0x1ec2)
+    #2 init_philos /home/drubio-m/Desktop/42Cursus/philosophers/philo/init.c:79 (philo+0x2145)
+    #3 main /home/drubio-m/Desktop/42Cursus/philosophers/philo/philo.c:22 (philo+0x1440)
+
+SUMMARY: ThreadSanitizer: unlock of an unlocked mutex (or by a wrong thread) /home/drubio-m/Desktop/42Cursus/philosophers/philo/terminate.c:96 in terminate_threads
+==================
+ThreadSanitizer: reported 12 warnings

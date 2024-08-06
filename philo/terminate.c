@@ -6,19 +6,17 @@
 /*   By: drubio-m <drubio-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 23:57:58 by drubio-m          #+#    #+#             */
-/*   Updated: 2023/10/25 11:51:05 by drubio-m         ###   ########.fr       */
+/*   Updated: 2024/08/06 20:25:00 by drubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-
 // It will be adding to data->ph_served one iteration each time a philo
 // reaches the minimun amount of dinners
-int	count_fat(t_data *data, int i)
+int count_fat(t_data *data, int i)
 {
-	if (data->number_of_meals == data->philo[i].meal_counter
-		&& data->philo[i].fill == 0)
+	if (data->number_of_meals == data->philo[i].meal_counter && data->philo[i].fill == 0)
 	{
 		data->philo[i].fill = 1;
 		data->ph_served++;
@@ -34,9 +32,9 @@ int	count_fat(t_data *data, int i)
 }
 
 // It's an infite loop checking if any philo has died
-void	monitor(t_data *data)
+void monitor(t_data *data)
 {
-	int	i;
+	int i;
 
 	while (1)
 	{
@@ -45,18 +43,18 @@ void	monitor(t_data *data)
 		{
 			pthread_mutex_lock(data->philo[i].lock);
 			if (killer(data, i) || count_fat(data, i))
-				return ;
+				return;
 			pthread_mutex_unlock(data->philo[i].lock);
 		}
 	}
 }
 
 // Calculates the time to see if someone has died
-int	killer(t_data *data, int i)
+int killer(t_data *data, int i)
 {
-	uint64_t	time;
-	uint64_t	last_m;
-	uint64_t	ttd;
+	uint64_t time;
+	uint64_t last_m;
+	uint64_t ttd;
 
 	time = data->start_time;
 	last_m = data->philo[i].last_meal;
@@ -74,7 +72,7 @@ int	killer(t_data *data, int i)
 }
 
 // Liberates all the data to avoid leaks
-void	free_misc(t_data *data)
+void free_misc(t_data *data)
 {
 	free(data->philo);
 	free(data->thread_id);
@@ -104,3 +102,4 @@ void	terminate_threads(t_data *data)
 		pthread_mutex_destroy(&(data->print[i]));
 	}
 }
+
