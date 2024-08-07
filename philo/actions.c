@@ -6,7 +6,7 @@
 /*   By: drubio-m <drubio-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 19:57:08 by drubio-m          #+#    #+#             */
-/*   Updated: 2024/08/06 19:56:56 by drubio-m         ###   ########.fr       */
+/*   Updated: 2024/08/07 12:56:09 by drubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,3 +48,4 @@ void	philo_eat(t_philo *philo)
 		pthread_mutex_lock(philo->print);
 	}
 }
+

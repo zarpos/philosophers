@@ -6,11 +6,12 @@
 /*   By: drubio-m <drubio-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 23:57:58 by drubio-m          #+#    #+#             */
-/*   Updated: 2024/08/06 20:25:00 by drubio-m         ###   ########.fr       */
+/*   Updated: 2024/08/07 13:10:44 by drubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
 
 // It will be adding to data->ph_served one iteration each time a philo
 // reaches the minimun amount of dinners

@@ -1,5 +1,5 @@
 ==================
-WARNING: ThreadSanitizer: lock-order-inversion (potential deadlock) (pid=242552)
+WARNING: ThreadSanitizer: lock-order-inversion (potential deadlock) (pid=4085016)
   Cycle in lock order graph: M8 (0x7b2000000050) => M2 (0x7b2000000000) => M5 (0x7b2000000028) => M8
 
   Mutex M2 acquired here while holding mutex M8 in thread T3:
@@ -22,17 +22,17 @@ WARNING: ThreadSanitizer: lock-order-inversion (potential deadlock) (pid=242552)
     #2 philo_eat /home/drubio-m/Desktop/42Cursus/philosophers/philo/actions.c:38 (philo+0x269e)
     #3 routine /home/drubio-m/Desktop/42Cursus/philosophers/philo/init.c:25 (philo+0x1b84)
 
-  Thread T3 (tid=242556, running) created by main thread at:
+  Thread T3 (tid=4085020, running) created by main thread at:
     #0 pthread_create ../../../../src/libsanitizer/tsan/tsan_interceptors_posix.cpp:969 (libtsan.so.0+0x605b8)
     #1 init_philos /home/drubio-m/Desktop/42Cursus/philosophers/philo/init.c:88 (philo+0x22b1)
     #2 main /home/drubio-m/Desktop/42Cursus/philosophers/philo/philo.c:22 (philo+0x1424)
 
-  Thread T1 (tid=242554, running) created by main thread at:
+  Thread T1 (tid=4085018, running) created by main thread at:
     #0 pthread_create ../../../../src/libsanitizer/tsan/tsan_interceptors_posix.cpp:969 (libtsan.so.0+0x605b8)
     #1 init_philos /home/drubio-m/Desktop/42Cursus/philosophers/philo/init.c:88 (philo+0x22b1)
     #2 main /home/drubio-m/Desktop/42Cursus/philosophers/philo/philo.c:22 (philo+0x1424)
 
-  Thread T2 (tid=242555, running) created by main thread at:
+  Thread T2 (tid=4085019, running) created by main thread at:
     #0 pthread_create ../../../../src/libsanitizer/tsan/tsan_interceptors_posix.cpp:969 (libtsan.so.0+0x605b8)
     #1 init_philos /home/drubio-m/Desktop/42Cursus/philosophers/philo/init.c:88 (philo+0x22b1)
     #2 main /home/drubio-m/Desktop/42Cursus/philosophers/philo/philo.c:22 (philo+0x1424)
@@ -40,9 +40,9 @@ WARNING: ThreadSanitizer: lock-order-inversion (potential deadlock) (pid=242552)
 SUMMARY: ThreadSanitizer: lock-order-inversion (potential deadlock) /home/drubio-m/Desktop/42Cursus/philosophers/philo/actions.c:19 in take_forks
 ==================
 ==================
-WARNING: ThreadSanitizer: unlock of an unlocked mutex (or by a wrong thread) (pid=242552)
+WARNING: ThreadSanitizer: unlock of an unlocked mutex (or by a wrong thread) (pid=4085016)
     #0 pthread_mutex_unlock ../../../../src/libsanitizer/sanitizer_common/sanitizer_common_interceptors.inc:4254 (libtsan.so.0+0x3bff8)
-    #1 terminate_threads /home/drubio-m/Desktop/42Cursus/philosophers/philo/terminate.c:94 (philo+0x2e06)
+    #1 terminate_threads /home/drubio-m/Desktop/42Cursus/philosophers/philo/terminate.c:95 (philo+0x2e06)
     #2 main /home/drubio-m/Desktop/42Cursus/philosophers/philo/philo.c:25 (philo+0x143c)
 
   Location is heap block of size 120 at 0x7b2000000080 allocated by main thread:
@@ -56,12 +56,12 @@ WARNING: ThreadSanitizer: unlock of an unlocked mutex (or by a wrong thread) (pi
     #2 init_philos /home/drubio-m/Desktop/42Cursus/philosophers/philo/init.c:79 (philo+0x210d)
     #3 main /home/drubio-m/Desktop/42Cursus/philosophers/philo/philo.c:22 (philo+0x1424)
 
-SUMMARY: ThreadSanitizer: unlock of an unlocked mutex (or by a wrong thread) /home/drubio-m/Desktop/42Cursus/philosophers/philo/terminate.c:94 in terminate_threads
+SUMMARY: ThreadSanitizer: unlock of an unlocked mutex (or by a wrong thread) /home/drubio-m/Desktop/42Cursus/philosophers/philo/terminate.c:95 in terminate_threads
 ==================
 ==================
-WARNING: ThreadSanitizer: unlock of an unlocked mutex (or by a wrong thread) (pid=242552)
+WARNING: ThreadSanitizer: unlock of an unlocked mutex (or by a wrong thread) (pid=4085016)
     #0 pthread_mutex_unlock ../../../../src/libsanitizer/sanitizer_common/sanitizer_common_interceptors.inc:4254 (libtsan.so.0+0x3bff8)
-    #1 terminate_threads /home/drubio-m/Desktop/42Cursus/philosophers/philo/terminate.c:94 (philo+0x2e06)
+    #1 terminate_threads /home/drubio-m/Desktop/42Cursus/philosophers/philo/terminate.c:95 (philo+0x2e06)
     #2 main /home/drubio-m/Desktop/42Cursus/philosophers/philo/philo.c:25 (philo+0x143c)
 
   Location is heap block of size 120 at 0x7b2000000080 allocated by main thread:
@@ -75,6 +75,6 @@ WARNING: ThreadSanitizer: unlock of an unlocked mutex (or by a wrong thread) (pi
     #2 init_philos /home/drubio-m/Desktop/42Cursus/philosophers/philo/init.c:79 (philo+0x210d)
     #3 main /home/drubio-m/Desktop/42Cursus/philosophers/philo/philo.c:22 (philo+0x1424)
 
-SUMMARY: ThreadSanitizer: unlock of an unlocked mutex (or by a wrong thread) /home/drubio-m/Desktop/42Cursus/philosophers/philo/terminate.c:94 in terminate_threads
+SUMMARY: ThreadSanitizer: unlock of an unlocked mutex (or by a wrong thread) /home/drubio-m/Desktop/42Cursus/philosophers/philo/terminate.c:95 in terminate_threads
 ==================
 ThreadSanitizer: reported 3 warnings
