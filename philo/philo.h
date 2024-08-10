@@ -6,7 +6,7 @@
 /*   By: drubio-m <drubio-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 18:09:33 by drubio-m          #+#    #+#             */
-/*   Updated: 2024/06/13 11:34:16 by drubio-m         ###   ########.fr       */
+/*   Updated: 2024/08/10 18:09:43 by drubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,9 @@ typedef struct s_philo
 	pthread_mutex_t		*print;
 	pthread_mutex_t		*lock;
 	t_data				*data;
+	int					left_fork_taken;
+	int					right_fork_taken;
+	int					lock_state;
 }	t_philo;
 
 // Memory

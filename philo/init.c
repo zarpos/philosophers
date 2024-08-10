@@ -6,7 +6,7 @@
 /*   By: drubio-m <drubio-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 17:22:09 by drubio-m          #+#    #+#             */
-/*   Updated: 2023/10/17 21:30:15 by drubio-m         ###   ########.fr       */
+/*   Updated: 2024/08/10 18:09:49 by drubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 // Routine for the philos
 // They lock and unlock the print mutex to avoid printing at the same time
-void	*routine(void *philo_no_casted)
+void *routine(void *philo_no_casted)
 {
-	t_philo	*philo;
+	t_philo *philo;
 
 	philo = philo_no_casted;
 	if (philo->id % 2 == 0)
@@ -29,7 +29,7 @@ void	*routine(void *philo_no_casted)
 
 // In this function we are allocating the memory for the mutex
 // And also we are setting the start time
-void	alloc_mutex(t_data *data)
+void alloc_mutex(t_data *data)
 {
 	data->philo = malloc(sizeof(t_philo) * data->nb_philos);
 	if (!data->philo)
@@ -49,11 +49,13 @@ void	alloc_mutex(t_data *data)
 	data->start_time = set_time();
 	data->finish_program = 0;
 	data->ph_served = 0;
+	data->philo->left_fork_taken = 0;
+	data->philo->right_fork_taken = 0;
 }
 
-// In this function we initiate the mutex and asign the forks 
+// In this function we initiate the mutex and asign the forks
 // for the diferent philos using our lovely friend, MATHS ;)
-void	init_mutex(t_data *data, int i)
+void init_mutex(t_data *data, int i)
 {
 	if (pthread_mutex_init(&(data->lock[i]), NULL))
 		return ;
@@ -69,9 +71,9 @@ void	init_mutex(t_data *data, int i)
 
 // In this function we will initiate all the variables of the philos
 // And also create all the threads for the different philos
-void	init_philos(t_data	*data)
+void init_philos(t_data *data)
 {
-	int	i;
+	int i;
 
 	i = -1;
 	while (++i < data->nb_philos)
