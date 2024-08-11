@@ -6,7 +6,7 @@
 /*   By: drubio-m <drubio-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 19:07:04 by drubio-m          #+#    #+#             */
-/*   Updated: 2023/10/16 22:14:47 by drubio-m         ###   ########.fr       */
+/*   Updated: 2024/08/11 21:51:42 by drubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,17 @@ void	ft_parse_arguments(int argc, char *argv[], t_data *data)
 // and if they are numbers
 void	ft_check_valid_args(int argc, char *argv[])
 {
-	int		i;
-	int		j;
+	int			i;
+	int			j;
+	long long	num_philos;	
 
 	i = 1;
 	j = 0;
 	if (argc < 5 || argc > 6)
-		ft_error("Invalid number or arguments");
+		ft_error("Invalid number of arguments");
+	num_philos = ft_atoi(argv[1]);
+	if (num_philos <= 0)
+		ft_error("Number of philosophers must be at least 1");
 	while (argv[i])
 	{
 		j = 0;
